@@ -1,0 +1,20 @@
+body {
+  font-family: 'Amatic SC', cursive;
+}
+
+.concert-photo {
+  height: 20vh;
+  width: auto;
+  opacity: 0.5;
+  margin-left: -5vh;
+}
+
+.concert-photo-wrapper {
+  width: 10vh;
+  overflow: hidden;
+}
+
+li {
+  font-family: 'Amatic SC', cursive;
+  list-style-type: none;
+}

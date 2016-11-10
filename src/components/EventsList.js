@@ -1,22 +1,6 @@
 import React, { Component } from 'react';
 import EventsListEntry from './EventsListEntry';
 
-// class EventsList extends Component {
-//   render() {
-//
-//     return (
-//       <div className="events-list">
-//         <ul>
-//           <EventsListEntry />
-//         </ul>
-//
-//       </div>
-//     )
-//   }
-// };
-
-
-
 const EventsList = (props) => {
   const { concerts } = props;
   return (
@@ -31,6 +15,7 @@ const EventsList = (props) => {
             cost={concerts[key].cost}
             photo={concerts[key].photo}
             startTime={concerts[key].startTime}
+            youTube={concerts[key].youTube}
           />
         )}
       </ul>

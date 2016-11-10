@@ -1,6 +1,6 @@
 # awesomeVancouverMusicApp
 
-Uses vanilla JS and JSDOM to scrape concert listings from local venues too small or underground to be included in mainstream listings. Uses YouTube API and LastFM API to provide more information about artists. Built with es6, React and Node. Status: Currently hacking: next TODO//: Add SQL database.
+Uses vanilla JS and JSDOM to scrape concert listings from local venues too small or underground to be included in mainstream listings. Uses YouTube API and LastFM API to provide more information about artists. Built with es6, React and Node. MVP.
 
 
 Venue:

@@ -4,4 +4,4 @@ Uses vanilla JS and JSDOM to scrape concert listings from local venues too small
 
 
 Venue:
-![alt text](https://github.com/jenjwong/awesomeVancouverMusicApp/blob/eventsList/src/css/images/venue.png "Venue Music App")
+![alt text](https://github.com/jenjwong/awesomeVancouverMusicApp/blob/eventsList/src/css/images/venuePic.png "Venue Music App")

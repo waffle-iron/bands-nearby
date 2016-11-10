@@ -1,20 +1,97 @@
 body {
-  font-family: 'Amatic SC', cursive;
+  margin: 0;
+  padding: 0;
 }
 
-.concert-photo {
-  height: 20vh;
-  width: auto;
-  opacity: 0.5;
-  margin-left: -5vh;
+a {
+  text-decoration: none;
+  color: #2E0854;
 }
 
-.concert-photo-wrapper {
-  width: 10vh;
-  overflow: hidden;
+ul {
+  margin: 0;
+  padding: 0;
+  color: #2E0854;
 }
 
 li {
-  font-family: 'Amatic SC', cursive;
   list-style-type: none;
+}
+.event-list-entry {
+  font-family: 'Quicksand', sans-serif;
+  overflow: hidden;
+}
+
+.show {
+  display: inline;
+}
+
+.hide {
+  display: none;
+}
+
+.show-info {
+  position: absolute;
+  z-index: 1;
+  font-size: 2em;
+  margin-top: 2vh;
+}
+
+.concert-photo-wrapper {
+  position: relative;;
+  z-index: -1;
+  height: 23vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.concert-photo {
+  z-index: -1;
+  height: 40vh;
+  width: 100vw;
+  opacity: 0.6;
+  margin-top: -5vh;
+  filter: blur(3px);
+}
+
+.video-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.video {
+  flex: 1;
+  border-width: 5px;
+  border-color: black;
+}
+
+.show-info {
+  margin-left: 3vw;
+}
+
+.date {
+  font-size: .7em;
+}
+
+.title {
+  margin-right: 4vw;
+  font-size: 1.1em;
+  font-family: 'Monoton', cursive;
+}
+
+.venue {
+  font-size: .7em;
+  font-weight: bolder;
+}
+
+.startTime {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  font-size: 0.7em;
+}
+
+.cost {
+  font-size: 0.7em;
 }

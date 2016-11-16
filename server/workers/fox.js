@@ -1,3 +1,6 @@
+//This scraper isn't done yet
+
+
 const jsdom = require('jsdom');
 const { zip } = require('lodash');
 

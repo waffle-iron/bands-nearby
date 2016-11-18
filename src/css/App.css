@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
+  max-height: 400px;
 }
 
 a {
@@ -12,6 +14,7 @@ ul {
   margin: 0;
   padding: 0;
   color: #2E0854;
+
 }
 
 li {
@@ -31,6 +34,7 @@ li {
 }
 
 .show-info {
+  height: 23vh;
   position: absolute;
   z-index: 1;
   font-size: 2em;
@@ -38,21 +42,22 @@ li {
 }
 
 .concert-photo-wrapper {
-  position: relative;;
+  position: relative;
   z-index: -1;
-  height: 23vh;
-  overflow: hidden;
+
   margin: 0;
   padding: 0;
+  height: 28vh;
 }
 
 .concert-photo {
   z-index: -1;
-  height: 40vh;
-  width: 100vw;
-  opacity: 0.6;
+  height: auto;
+  width: 100%;
+  opacity: 0.3;
   margin-top: -5vh;
   filter: blur(3px);
+  /*filter: sepia(90%);*/
 }
 
 .video-container {
@@ -69,6 +74,8 @@ li {
 
 .show-info {
   margin-left: 3vw;
+  width: 40%;
+  overflow: hidden;
 }
 
 .date {
@@ -94,4 +101,20 @@ li {
 
 .cost {
   font-size: 0.7em;
+}
+
+.similarArtists {
+  margin-top: 1vh;
+  font-size: 0.5em;
+  max-width: 99%;
+  overflow: hidden;
+}
+
+@media screen
+  and (min-device-width: 1000px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    body {
+      max-width: 40%;
+      margin: auto;
+    }
 }

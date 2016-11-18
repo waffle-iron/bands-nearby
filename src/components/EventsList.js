@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import EventsListEntry from './EventsListEntry';
 
-const EventsList = (props) => {
-  const { concerts } = props;
-  return (
-    <div className="events-list">
+class EventsList extends Component {
+
+  render() {
+    const { concerts } = this.props;
+    return (
+      <div ref= 'list' className="events-list">
       <ul>
-        {Object.keys(concerts).map(key =>
-          <EventsListEntry
-            title={concerts[key].title}
-            link={concerts[key].link}
-            date={concerts[key].date}
-            venue={concerts[key].venue}
-            cost={concerts[key].cost}
-            photo={concerts[key].photo}
-            startTime={concerts[key].startTime}
-            youTube={concerts[key].youTube}
-          />
-        )}
+      {Object.keys(concerts).map(keyInfo =>
+        <EventsListEntry
+        key={JSON.stringify(concerts[keyInfo].date)}
+        title={concerts[keyInfo].title}
+        link={concerts[keyInfo].link}
+        date={concerts[keyInfo].date}
+        venue={concerts[keyInfo].venue}
+        cost={concerts[keyInfo].cost}
+        photo={concerts[keyInfo].photo}
+        startTime={concerts[keyInfo].startTime}
+        youTube={concerts[keyInfo].youTube}
+        similarArtists={concerts[keyInfo].similarArtists}
+        />
+      )}
       </ul>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 export default EventsList;

@@ -9,17 +9,28 @@ const getSoundsLike = (concertTitle, concertObj) => {
   .then(function(artistInfo) {
     //lastFM's API returns 200 status code for artists not found error so not handled by fetch catch;
     if (!Object.keys(artistInfo).includes('error')) {
-      return [artistInfo].map(artist => {
+      const similarArtists = [artistInfo].map(artist => {
         if (artist) {
           return artist.artist.similar.artist.map(similarArtists => {
             return similarArtists.name;
           })
         }
       })
+      const artistSummary = [artistInfo].map(artist => {
+        if (artist) {
+          return artist.artist.bio.summary
+
+        }
+      })
+      const lastFMObj = {};
+      lastFMObj.similarArtistsArray = similarArtists
+      lastFMObj.artistSummary = artistSummary[0].split('<a')
+      return lastFMObj
     }
   })
-  .then(function(similarArtistsArray) {
-    concertObj.similarArtists = similarArtistsArray[0]
+  .then(function(lastFMObj) {
+    concertObj.similarArtists = lastFMObj.similarArtistsArray[0]
+    concertObj.artistSummary = lastFMObj.artistSummary[0]
     return concertObj
   })
   .catch(function(err) {

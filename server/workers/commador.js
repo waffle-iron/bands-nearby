@@ -12,7 +12,7 @@ const commadorScaper = (window) => {
         const data = node.textContent.trim();
         const dataClean = data.split('\t');
         concertObj.date = dataClean[0];
-        concertObj.title = dataClean[dataClean.length - 1];
+        concertObj.title = dataClean[dataClean.length - 1].split(',')[0];
       }
       if (node.className === 'ticket_meta') {
         const costIndex = node.textContent.indexOf('$');

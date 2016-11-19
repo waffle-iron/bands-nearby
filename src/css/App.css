@@ -60,6 +60,18 @@ li {
   /*filter: sepia(90%);*/
 }
 
+.artist-summary-container {
+  background-color: white;
+  opacity: 0.4;
+}
+
+.artist-summary {
+  width: 90%;
+  margin: auto;
+  line-height: 150%;
+  color: black;
+}
+
 .video-container {
   display: flex;
   flex-direction: column;
@@ -74,17 +86,17 @@ li {
 
 .show-info {
   margin-left: 3vw;
-  width: 40%;
+  width: 90%;
   overflow: hidden;
 }
 
 .date {
-  font-size: .7em;
+  font-size: 2vh;
 }
 
 .title {
   margin-right: 4vw;
-  font-size: 1.1em;
+  font-size: 5vh;
   font-family: 'Monoton', cursive;
 }
 
@@ -103,11 +115,9 @@ li {
   font-size: 0.7em;
 }
 
-.similarArtists {
+.similar-artists {
   margin-top: 1vh;
   font-size: 0.5em;
-  max-width: 99%;
-  overflow: hidden;
 }
 
 @media screen

@@ -29,8 +29,8 @@ class EventsListEntry extends Component {
     similarArtists[0] ? soundsLike = `Sounds like: ${similarArtists}` : null
 
     return (
-      <li className="event-list-entry"  onClick={()=> this.toggle()}>
-        <div className="show-info">
+      <li className="event-list-entry">
+        <div className="show-info" onClick={()=> this.toggle()}>
           <div className="date">{date}</div>
           <span className="title">{title}</span>
           <div>
@@ -41,14 +41,14 @@ class EventsListEntry extends Component {
           <span className="startTime">{startTime}pm</span>
           <span className="cost">${cost}</span>
           <div className="similarArtists">
-          {soundsLike}
+            {soundsLike}
           </div>
         </div>
         <div className="concert-photo-wrapper">
           <img className="concert-photo" src={photo} alt="concert photo" />
         </div>
         <div className="video-container" className={isDisplayed}>
-          {youTube.map(video => <Video video={`http://www.youtube.com/embed/${video}`} key={video}/>)}
+          {youTube.map(video => <Video video={video} thumbnail={photo} key={video}/>)}
         </div>
       </li>
     )}

@@ -22,7 +22,7 @@ class EventsListEntry extends Component {
   }
 
   render() {
-    const { title, link, date, venue, cost, photo, startTime, youTube, similarArtists } = this.props;
+    const { title, link, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary } = this.props;
     let isDisplayed = this.addClass()
 
     let soundsLike;
@@ -48,7 +48,8 @@ class EventsListEntry extends Component {
           <img className="concert-photo" src={photo} alt="concert photo" />
         </div>
         <div className="video-container" className={isDisplayed}>
-          {youTube.map(video => <Video video={video} thumbnail={photo} key={video}/>)}
+          <span><p>{artistSummary}</p></span>
+          {youTube.map((video, index) => <Video video={video} index={index} thumbnail={photo} isDisplayed={this.state.toggled} key={index}/>)}
         </div>
       </li>
     )}

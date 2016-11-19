@@ -9,15 +9,25 @@ class Video extends Component {
     }
   }
 
+  autoplayFirst() {
+    return (
+      <iframe className="video" className={this.props.isDisplayed} width="100%" height="auto" src={`http://www.youtube.com/embed/${this.props.video}?autoplay=1`} frameBorder="0" ></iframe>
+    )
+  }
+
   renderHelper() {
-    if(!this.state.shouldDisplayIframe) {
+    if(!this.props.isDisplayed) {
       return (
         <img src={this.props.thumbnail} onClick={()=>this.setState({shouldDisplayIframe: true})} alt='thumbnail'/>
       )
     } else {
-      return(
-        <iframe className="video" width="100%" height="auto" src={`http://www.youtube.com/embed/${this.props.video}?autoplay=1`} frameBorder="0" ></iframe>
-      )
+      if (!this.props.index) {
+        return this.autoplayFirst()
+      } else {
+        return(
+          <iframe className="video" className={this.props.isDisplayed} width="100%" height="auto" src={`http://www.youtube.com/embed/${this.props.video}`} frameBorder="0" ></iframe>
+        )
+      }
     }
   }
 

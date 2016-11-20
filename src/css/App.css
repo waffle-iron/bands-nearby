@@ -17,6 +17,7 @@ ul {
 
 li {
   list-style-type: none;
+  opacity: 0.9;
 }
 
 .event-list-entry {
@@ -54,10 +55,6 @@ li {
   /*filter: sepia(90%);*/
 }
 
-.artist-summary-container {
-  background-color: white;
-  opacity: 0.4;
-}
 
 .artist-summary {
   width: 90%;
@@ -93,6 +90,7 @@ li {
 
 .date {
   font-size: 2vh;
+  opacity: 0.7;
 }
 
 .title {
@@ -119,6 +117,8 @@ li {
 .similar-artists {
   margin-top: 1vh;
   font-size: 0.5em;
+  font-style: italic;
+  opacity: 0.5;
 }
 
 @media screen
@@ -137,7 +137,30 @@ li {
 
     .title {
       font-size: 220%;
-      line-height: 120%;
+      line-height: 140%;
+      display: inline-block;
+      padding-top: 1vh;
+      padding-bottom: 1vh;
+    }
+
+    .venue {
+      font-size: 160%;
+      font-weight: bolder;
+    }
+
+    .startTime {
+      margin-left: 2vw;
+      margin-right: 2vw;
+      font-size: 100%;
+    }
+
+    .cost {
+      font-size: 100%;
+    }
+
+    .similar-artists {
+      margin-top: 3vh;
+      font-size: 100%;
     }
 
 }

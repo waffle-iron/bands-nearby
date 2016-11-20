@@ -26,7 +26,7 @@ class EventsListEntry extends Component {
     let isDisplayed = this.addClass()
 
     let soundsLike;
-    similarArtists[0] ? soundsLike = `Sounds like: ${similarArtists}` : null
+    similarArtists[0] ? soundsLike = `Sounds Like: ${similarArtists}` : null
 
     return (
       <li className="event-list-entry" onClick={()=> this.toggle()}>
@@ -38,8 +38,6 @@ class EventsListEntry extends Component {
               <span className="venue">{venue}</span>
             </a>
           </div>
-          <span className="startTime">{startTime}pm</span>
-          <span className="cost">${cost}</span>
           <div className="similar-artists">
             {soundsLike}
           </div>

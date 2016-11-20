@@ -1,8 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-y: scroll;
-  max-height: 400px;
 }
 
 a {
@@ -20,9 +18,9 @@ ul {
 li {
   list-style-type: none;
 }
+
 .event-list-entry {
   font-family: 'Quicksand', sans-serif;
-  overflow: hidden;
 }
 
 .show {
@@ -33,13 +31,7 @@ li {
   display: none;
 }
 
-.show-info {
-  height: 23vh;
-  position: absolute;
-  z-index: 1;
-  font-size: 2em;
-  margin-top: 2vh;
-}
+
 
 .concert-photo-wrapper {
   position: relative;
@@ -47,7 +39,9 @@ li {
 
   margin: 0;
   padding: 0;
-  height: 28vh;
+  height: 26vh;
+  overflow: hidden;
+
 }
 
 .concert-photo {
@@ -70,21 +64,28 @@ li {
   margin: auto;
   line-height: 150%;
   color: black;
+
 }
 
 .video-container {
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  background-color: blue;
 }
 
 .video {
   flex: 1;
   border-width: 5px;
   border-color: black;
+  background-color: pink;
 }
 
 .show-info {
+  height: 23vh;
+  position: absolute;
+  z-index: 1;
+  margin-top: 2vh;
   margin-left: 3vw;
   width: 90%;
   overflow: hidden;
@@ -96,7 +97,7 @@ li {
 
 .title {
   margin-right: 4vw;
-  font-size: 5vh;
+  font-size: 120%;
   font-family: 'Monoton', cursive;
 }
 
@@ -124,7 +125,19 @@ li {
   and (min-device-width: 1000px)
   and (-webkit-min-device-pixel-ratio: 1) {
     body {
-      max-width: 40%;
+      max-width: 50%;
+      position: relative;
       margin: auto;
     }
+
+    .event-list-entry {
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .title {
+      font-size: 220%;
+      line-height: 120%;
+    }
+
 }

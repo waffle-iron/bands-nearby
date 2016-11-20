@@ -24,7 +24,7 @@ const getSoundsLike = (concertTitle, concertObj) => {
       })
       const lastFMObj = {};
       lastFMObj.similarArtistsArray = similarArtists
-      lastFMObj.artistSummary = artistSummary[0].split('<a')
+      lastFMObj.artistSummary = artistSummary[0].split(' <a')
       return lastFMObj
     }
   })

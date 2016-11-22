@@ -36,6 +36,8 @@ class EventsListEntry extends Component {
           <div>
             <a href={link}>
               <span className="venue">{venue}</span>
+              <span className="startTime">{startTime}pm</span>
+              <span className="cost">${cost}</span>
             </a>
           </div>
           <div className="similar-artists">

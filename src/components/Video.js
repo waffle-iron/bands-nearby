@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Video extends Component {
   constructor() {
-    super()
-    this.renderHelper = this.renderHelper.bind(this)
+    super();
     this.state = {
-      shouldDisplayIframe: false
-    }
+      shouldDisplayIframe: false,
+    };
   }
 
   autoplayFirst() {
@@ -16,27 +15,27 @@ class Video extends Component {
   }
 
   renderHelper() {
-    if(!this.props.isDisplayed) {
+    if (!this.props.isDisplayed) {
       return (
-        <img src={this.props.thumbnail} onClick={()=>this.setState({shouldDisplayIframe: true})} alt='thumbnail'/>
-      )
+        <img src={this.props.thumbnail} onClick={() =>this.setState({shouldDisplayIframe: true})} alt='thumbnail'/>
+      );
     } else {
       if (!this.props.index) {
-        return this.autoplayFirst()
+        return this.autoplayFirst();
       } else {
-        return(
-          <iframe className="video" className={this.props.isDisplayed} width="100%" height="auto" src={`http://www.youtube.com/embed/${this.props.video}`} frameBorder="0" ></iframe>
-        )
+        return (
+          <iframe className="video" className={this.props.isDisplayed} width="100%" height="auto" src={`http://www.youtube.com/embed/${this.props.video}?html5=1`} allowFullScreen="allowfullscreen" frameBorder="0" />
+        );
       }
     }
   }
 
   render() {
-    return(
+    return (
       <div>
         {this.renderHelper()}
       </div>
-    )
+    );
   }
 }
 

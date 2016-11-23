@@ -10,20 +10,20 @@ const biltmoreScraper = (window) => {
     return Array.from(window.document.querySelectorAll(selector)).map(cb);
   };
   // creates arrays holding show info (all dates are in one array...)
-  const dates = generateAllInfos('.event-date', (date) => date.textContent);
-  const link = generateAllInfos('.event-date a', (l) => l.href);
-  const titles = generateAllInfos('.dp_pec_event_title_sp', (title) => title.textContent);
+  const dates = generateAllInfos('.event-date', date => date.textContent);
+  const link = generateAllInfos('.event-date a', l => l.href);
+  const titles = generateAllInfos('.dp_pec_event_title_sp', title => title.textContent);
   const cost = generateAllInfos('#ticket_price', (price) => {
     const costIndex = price.textContent.indexOf('$');
-    return price.textContent.slice(costIndex+1, costIndex + 3).trim();
+    return price.textContent.slice(costIndex + 1, costIndex + 3).trim();
   });
   const startTime = generateAllInfos('#door_info', (door) => {
     const timeIndex = door.textContent.indexOf('pm');
     const time = door.textContent.slice(timeIndex - 2, timeIndex).trim();
     return parseInt(time, 10) ? time : 'Not Available';
   });
-  const photo = generateAllInfos('.dp_pec_event_photo img', (pic) => pic.src);
-  const fb = generateAllInfos('.fb_btn', (l) => l.href);
+  const photo = generateAllInfos('.dp_pec_event_photo img', pic => pic.src);
+  const fb = generateAllInfos('.fb_btn', l => l.href);
 
   //  zips all arrays together and cuts off last two elements
   // (accounts for bad naming conventions on biltmorecabaret site)
@@ -44,7 +44,6 @@ const biltmoreScraper = (window) => {
       };
     }
   });
-
-}
+};
 
 module.exports = biltmoreScraper;

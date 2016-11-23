@@ -6,7 +6,7 @@ class EventsList extends Component {
   render() {
     const { concerts } = this.props;
     return (
-      <div ref= 'list' className="events-list">
+      <div ref={() => 'list'} className="events-list">
         <ul>
           {Object.keys(concerts).map(keyInfo =>
             <EventsListEntry
@@ -21,11 +21,11 @@ class EventsList extends Component {
               youTube={concerts[keyInfo].youTube}
               similarArtists={concerts[keyInfo].similarArtists}
               artistSummary={concerts[keyInfo].artistSummary}
-            />
+            />,
       )}
-      </ul>
+        </ul>
       </div>
-    )
+    );
   }
 }
 

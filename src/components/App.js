@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import EventsList from './EventsList';
-import concerts from '../utilities/mockData.js'
+import concerts from '../utilities/mockData';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       concerts,
-    }
+    };
   }
   render() {
     return (

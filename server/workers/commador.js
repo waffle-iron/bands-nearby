@@ -2,7 +2,7 @@ const jsdom = require('jsdom');
 
 const commadorScaper = (window) => {
   const concertsInDom = window.document.querySelectorAll('.row.ticket-row');
-  return Array.from(concertsInDom).map(concert => {
+  return Array.from(concertsInDom).map((concert) => {
     const concertObj = {};
     let node = concert;
     const queue = [];
@@ -34,6 +34,6 @@ const commadorScaper = (window) => {
     }
     return concertObj;
   });
-}
+};
 
 module.exports = commadorScaper;

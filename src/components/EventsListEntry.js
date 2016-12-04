@@ -3,34 +3,30 @@ import Video from './Video';
 
 class EventsListEntry extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       toggled: false,
-    }
+    };
   }
 
   toggle() {
-    this.setState({toggled: !this.state.toggled})
+    this.setState({ toggled: !this.state.toggled });
   }
 
-  addClass(){
-    if (this.state.toggled) {
-      return "show "
-    } else {
-      return "hide"
-    }
+  addClass() {
+    return this.state.toggled ? 'show ' : 'hide';
   }
 
   render() {
     const { title, link, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary } = this.props;
-    let isDisplayed = this.addClass()
+    const isDisplayed = this.addClass();
 
     let soundsLike;
-    similarArtists[0] ? soundsLike = `Sounds Like: ${similarArtists}` : null
+    similarArtists[0] ? soundsLike = `Sounds Like: ${similarArtists}` : null;
 
     return (
-      <li className="event-list-entry" onClick={()=> this.toggle()}>
-        <div className="show-info" >
+      <li className="event-list-entry" onClick={() => this.toggle()}>
+        <div className="show-info">
           <div className="date">{date}</div>
           <span className="title">{title}</span>
           <div>
@@ -45,18 +41,27 @@ class EventsListEntry extends Component {
           </div>
         </div>
         <div className="concert-photo-wrapper">
-          <img className="concert-photo" src={photo} alt="concert photo" />
+          <img className="concert-photo" src={photo} alt={photo} />
         </div>
-        <div className="video-container" className={isDisplayed}>
+        <div className='video-container' className={isDisplayed}>
           <div className="artist-summary-container">
             <div className="artist-summary">
               <p>{artistSummary}</p>
             </div>
           </div>
-          {youTube.map((video, index) => <Video video={video} index={index} thumbnail={photo} isDisplayed={this.state.toggled} key={index}/>)}
+          {youTube.map((video, index) => {
+            return (<Video
+              video={video}
+              index={index}
+              thumbnail={photo}
+              isDisplayed={this.state.toggled}
+              key={index}
+            />);
+          })}
         </div>
       </li>
-    )}
+    );
   }
+}
 
-export default EventsListEntry
+export default EventsListEntry;

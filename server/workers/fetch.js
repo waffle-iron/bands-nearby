@@ -1,20 +1,14 @@
 require('isomorphic-fetch');
 
-const fetchData = (url) => {
-  return fetch(url)
-  .then(function(response) {
+const fetchData = url => fetch(url)
+  .then((response) => {
     if (response.status >= 400) {
-      throw new Error("Bad response from server");
+      throw new Error('Bad response from server');
     }
     return response.json();
   })
-  .then(function(data) {
-    return data;
-  })
-  .catch(function(error) {
-    //TODO: implement catch
-    console.log('fetchfail' + url)
-  })
-}
+  .catch((error) => {
+    console.error(`fetchfail ${url} ${error}`);
+  });
 
 module.exports = fetchData;

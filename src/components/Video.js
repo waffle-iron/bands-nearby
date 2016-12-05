@@ -11,10 +11,6 @@ class Video extends Component {
 
 
   renderHelper() {
-
-
-
-
     if (!this.props.isDisplayed) {
       return (
         <img src={this.props.thumbnail} onClick={() =>this.setState({shouldDisplayIframe: true})} alt='thumbnail'/>
@@ -30,8 +26,7 @@ class Video extends Component {
         };
         return (
           <YouTube
-            className="video"
-            className={this.props.isDisplayed}
+            // className={this.props.isDisplayed}
             videoId="gOd05l6gD-U"
             opts={opts}
             onPlay={this.pauseAllButPlaying}
@@ -47,8 +42,7 @@ class Video extends Component {
         };
         return (
           <YouTube
-            className="video"
-            className={this.props.isDisplayed}
+            // className={this.props.isDisplayed}
             videoId="gOd05l6gD-U"
             opts={opts}
             onPlay={this.pauseAllButPlaying}
@@ -59,16 +53,13 @@ class Video extends Component {
     }
   }
 
-  pauseAllButPlaying() {
-  console.log('called')
-  document.querySelectorAll('#player video').forEach(iframe => {
-
-  })
- }
-
-
-
-
+  pauseAllButPlaying(event) {
+    document.querySelectorAll('iframe').forEach(video => {
+      if(video !== event.target.a) {
+        video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+      }
+    });
+  }
 
 
   render() {

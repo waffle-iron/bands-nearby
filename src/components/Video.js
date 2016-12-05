@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import YouTube from 'react-youtube';
 
 class Video extends Component {
   constructor() {
@@ -8,35 +9,77 @@ class Video extends Component {
     };
   }
 
-  autoplayFirst() {
-    return (
-      <iframe className="video" className={this.props.isDisplayed} width="100%" height="auto" src={`http://www.youtube.com/embed/${this.props.video}?autoplay=1`} frameBorder="0" ></iframe>
-    )
-  }
 
   renderHelper() {
+
+
+
+
     if (!this.props.isDisplayed) {
       return (
         <img src={this.props.thumbnail} onClick={() =>this.setState({shouldDisplayIframe: true})} alt='thumbnail'/>
       );
     } else {
       if (!this.props.index) {
-        return this.autoplayFirst();
-      } else {
+        const opts = {
+          height: 'auto',
+          width: '100%',
+          playerVars: { // https://developers.google.com/youtube/player_parameters
+            autoplay: 1
+          }
+        };
         return (
-          <iframe className="video" className={this.props.isDisplayed} width="100%" height="auto" src={`http://www.youtube.com/embed/${this.props.video}?html5=1`} allowFullScreen="allowfullscreen" frameBorder="0" />
+          <YouTube
+            className="video"
+            className={this.props.isDisplayed}
+            videoId="gOd05l6gD-U"
+            opts={opts}
+            onPlay={this.pauseAllButPlaying}
+          />
+        )
+      } else {
+        const opts = {
+          height: 'auto',
+          width: '100%',
+          playerVars: { // https://developers.google.com/youtube/player_parameters
+            autoplay: 0
+          }
+        };
+        return (
+          <YouTube
+            className="video"
+            className={this.props.isDisplayed}
+            videoId="gOd05l6gD-U"
+            opts={opts}
+            onPlay={this.pauseAllButPlaying}
+          />
+
         );
       }
     }
   }
 
+  pauseAllButPlaying() {
+  console.log('called')
+  document.querySelectorAll('#player video').forEach(iframe => {
+
+  })
+ }
+
+
+
+
+
+
   render() {
+
     return (
       <div>
+
         {this.renderHelper()}
-      </div>
-    );
-  }
-}
+        </div>
+        );
+        }
+        }
 
 export default Video;

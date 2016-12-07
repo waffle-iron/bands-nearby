@@ -9,6 +9,13 @@ class Video extends Component {
     };
   }
 
+  pauseAllButPlaying(event) {
+    document.querySelectorAll('iframe').forEach((video) => {
+      if (video !== event.target.a) {
+        video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+      }
+    });
+  }
 
   renderHelper() {
     if (!this.props.isDisplayed) {
@@ -21,13 +28,13 @@ class Video extends Component {
           height: 'auto',
           width: '100%',
           playerVars: { // https://developers.google.com/youtube/player_parameters
-            autoplay: 1
+            autoplay: 1,
           }
         };
         return (
           <YouTube
             // className={this.props.isDisplayed}
-            videoId="gOd05l6gD-U"
+            videoId={this.props.videoId}
             opts={opts}
             onPlay={this.pauseAllButPlaying}
           />
@@ -37,13 +44,13 @@ class Video extends Component {
           height: 'auto',
           width: '100%',
           playerVars: { // https://developers.google.com/youtube/player_parameters
-            autoplay: 0
+            autoplay: 0,
           }
         };
         return (
           <YouTube
             // className={this.props.isDisplayed}
-            videoId="gOd05l6gD-U"
+            videoId={this.props.videoId}
             opts={opts}
             onPlay={this.pauseAllButPlaying}
           />
@@ -53,24 +60,13 @@ class Video extends Component {
     }
   }
 
-  pauseAllButPlaying(event) {
-    document.querySelectorAll('iframe').forEach(video => {
-      if(video !== event.target.a) {
-        video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-      }
-    });
-  }
-
-
   render() {
-
     return (
       <div>
-
         {this.renderHelper()}
-        </div>
-        );
-        }
-        }
+      </div>
+    );
+  }
+}
 
 export default Video;

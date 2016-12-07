@@ -51,7 +51,7 @@ class EventsListEntry extends Component {
           </div>
           {youTube.map((video, index) => {
             return (<Video
-              video={video}
+              videoId={video}
               index={index}
               thumbnail={photo}
               isDisplayed={this.state.toggled}

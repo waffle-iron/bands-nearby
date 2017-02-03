@@ -8,21 +8,21 @@ class EventsList extends Component {
     return (
       <div ref={() => 'list'} className="events-list">
         <ul>
-          {Object.keys(concerts).map(keyInfo =>
+          {Object.keys(concerts).map(concert =>
             <EventsListEntry
-              key={JSON.stringify(concerts[keyInfo].date)}
-              title={concerts[keyInfo].title}
-              link={concerts[keyInfo].link}
-              date={concerts[keyInfo].date}
-              venue={concerts[keyInfo].venue}
-              cost={concerts[keyInfo].cost}
-              photo={concerts[keyInfo].photo}
-              startTime={concerts[keyInfo].startTime}
-              youTube={concerts[keyInfo].youTube}
-              similarArtists={concerts[keyInfo].similarArtists}
-              artistSummary={concerts[keyInfo].artistSummary}
+              key={concerts[concert].link}
+              title={concerts[concert].title}
+              link={concerts[concert].link}
+              date={concerts[concert].date}
+              venue={concerts[concert].venue}
+              cost={concerts[concert].cost}
+              photo={concerts[concert].photo}
+              startTime={concerts[concert].startTime}
+              youTube={concerts[concert].youTube}
+              similarArtists={concerts[concert].similarArtists}
+              artistSummary={concerts[concert].artistSummary}
             />,
-      )}
+          )}
         </ul>
       </div>
     );

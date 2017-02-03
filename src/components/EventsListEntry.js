@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Video from './Video';
+import VideoList from './VideoList'
 
 class EventsListEntry extends Component {
   constructor() {
@@ -49,7 +49,8 @@ class EventsListEntry extends Component {
               <p>{artistSummary}</p>
             </div>
           </div>
-          {youTube.map((video, index) => {
+          <VideoList photo={photo} youTube={youTube} isDisplayed={this.state.toggled}/>
+          {/* {youTube.map((video, index) => {
             return (<Video
               videoId={video}
               index={index}
@@ -57,7 +58,7 @@ class EventsListEntry extends Component {
               isDisplayed={this.state.toggled}
               key={index}
             />);
-          })}
+          })} */}
         </div>
       </li>
     );

@@ -52,6 +52,7 @@ li {
   opacity: 0.3;
   margin-top: -5vh;
   filter: blur(3px);
+  overflow: hidden;
   /*filter: sepia(90%);*/
 }
 
@@ -93,7 +94,7 @@ li {
   opacity: 0.7;
 }
 
-.title {
+.headliner {
   margin-right: 4vw;
   font-size: 120%;
   font-family: 'Monoton', cursive;

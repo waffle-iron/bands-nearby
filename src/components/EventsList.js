@@ -8,10 +8,10 @@ class EventsList extends Component {
     return (
       <div ref={() => 'list'} className="events-list">
         <ul>
-          {Object.keys(concerts).map(concert =>
+          {Object.keys(concerts).map((concert, index) =>
             <EventsListEntry
-              key={concerts[concert].link}
-              title={concerts[concert].title}
+              key={index}
+              titles={concerts[concert].title}
               link={concerts[concert].link}
               date={concerts[concert].date}
               venue={concerts[concert].venue}

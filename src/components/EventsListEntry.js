@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import VideoList from './VideoList'
+import SimilarArtistsList from './SimilarArtistsList'
+import TitleList from './TitleList'
 
 class EventsListEntry extends Component {
   constructor() {
@@ -17,27 +19,30 @@ class EventsListEntry extends Component {
     return this.state.toggled ? 'show ' : 'hide';
   }
 
-  render() {
-    const { title, link, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary } = this.props;
-    const isDisplayed = this.addClass();
+  isCover(cost) {
+    return typeof cost === 'number' && cost === cost ? cost = `$${cost}` : cost = 'No Cover';
+      }
 
-    let soundsLike;
-    similarArtists[0] ? soundsLike = `Sounds Like: ${similarArtists}` : null;
+  render() {
+    const { titles, link, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary } = this.props;
+    const isDisplayed = this.addClass();
+    const showCost = this.isCover(cost);
 
     return (
       <li className="event-list-entry" onClick={() => this.toggle()}>
         <div className="show-info">
           <div className="date">{date}</div>
-          <span className="title">{title}</span>
+          <span className="headliner">{titles[0]}</span>
+          <span className="other-bands"><TitleList titles={this.props.titles} /></span>
           <div>
             <a href={link}>
               <span className="venue">{venue}</span>
               <span className="startTime">{startTime}pm</span>
-              <span className="cost">${cost}</span>
+              <span className="cost">{showCost}</span>
             </a>
           </div>
           <div className="similar-artists">
-            {soundsLike}
+            {similarArtists[0] && <SimilarArtistsList artists={similarArtists} />}
           </div>
         </div>
         <div className="concert-photo-wrapper">
@@ -50,15 +55,6 @@ class EventsListEntry extends Component {
             </div>
           </div>
           <VideoList photo={photo} youTube={youTube} isDisplayed={this.state.toggled}/>
-          {/* {youTube.map((video, index) => {
-            return (<Video
-              videoId={video}
-              index={index}
-              thumbnail={photo}
-              isDisplayed={this.state.toggled}
-              key={index}
-            />);
-          })} */}
         </div>
       </li>
     );

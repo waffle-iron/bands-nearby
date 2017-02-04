@@ -8,7 +8,7 @@ const fetchData = url => fetch(url)
     return response.json();
   })
   .catch((error) => {
-    console.error(`fetchfail ${url} ${error}`);
+    console.error(`error in fetch.js ${url} ${error}`);
   });
 
 module.exports = fetchData;

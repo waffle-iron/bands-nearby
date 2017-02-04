@@ -4,13 +4,15 @@ import EventsListEntry from './EventsListEntry';
 class EventsList extends Component {
 
   render() {
-    const { concerts } = this.props;
+    const { concerts, exploreMusic } = this.props;
     return (
       <div ref={() => 'list'} className="events-list">
         <ul>
           {Object.keys(concerts).map((concert, index) =>
             <EventsListEntry
               key={index}
+              id={index}
+              exploreMusic={exploreMusic}
               titles={concerts[concert].title}
               ticketLink={concerts[concert].link}
               date={concerts[concert].date}

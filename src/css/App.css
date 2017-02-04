@@ -65,7 +65,7 @@ li {
 
 }
 
-.video-container {
+.more-info-dropdown {
   display: flex;
   flex-direction: column;
   max-width: 100%;

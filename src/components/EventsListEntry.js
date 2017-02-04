@@ -21,7 +21,7 @@ class EventsListEntry extends Component {
     return typeof cost === 'number' && cost === cost ? cost = `$${cost}` : cost = 'No Cover';
   }
   render() {
-    const { titles, ticketLink, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary, id, exploreMusic } = this.props;
+    const { titles, ticketLink, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary, id, exploreMusic, eMusicHandler } = this.props;
     const isDisplayed = this.addClass();
     const showCost = this.isCover(cost);
 
@@ -46,6 +46,7 @@ class EventsListEntry extends Component {
         </div>
         <InfoDropDown
           exploreMusic={exploreMusic}
+          eMusicHandler={eMusicHandler}
           id={id}
           artistSummary={artistSummary} photo={photo}
           youTube={youTube} toggled={this.state.toggled}

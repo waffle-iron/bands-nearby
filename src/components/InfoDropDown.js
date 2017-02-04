@@ -7,29 +7,31 @@ class InfoDropDown extends Component {
   }
 
   render() {
-    const { exploreMusic, id, artistSummary, photo, youTube, toggled, isDisplayed } = this.props;
-
+    const { exploreMusic, eMusicHandler, id, artistSummary, photo, youTube, toggled, isDisplayed } = this.props;
+    let style;
+    exploreMusic ? style = 'exploreMusic-more-info-dropdown' : style = 'more-info-dropdown';
+    
     if (id === exploreMusic) {
       return (
-        <div className='more-info-dropdown' className={true}>
+        <div className={style} >
           <div className="artist-summary-container">
             <div className="artist-summary">
               <p>{artistSummary}</p>
             </div>
           </div>
-          <VideoList photo={photo} youTube={youTube} isDisplayed={true}/>
+          <VideoList photo={photo} youTube={youTube} isDisplayed={true} eMusicHandler={eMusicHandler}/>
         </div>
       )
     }
 
     return (
-      <div className='more-info-dropdown' className={isDisplayed}>
+      <div className={style} className={isDisplayed} >
         <div className="artist-summary-container">
           <div className="artist-summary">
             <p>{artistSummary}</p>
           </div>
         </div>
-        <VideoList photo={photo} youTube={youTube} isDisplayed={toggled}/>
+        <VideoList photo={photo} youTube={youTube} isDisplayed={toggled} eMusicHandler={eMusicHandler}/>
       </div>
     );
   }

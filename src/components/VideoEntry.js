@@ -11,7 +11,6 @@ class VideoEntry extends Component {
 
   // pauses all videos but current using youTube api
   pauseAllButPlaying(event) {
-    console.log('this works')
     document.querySelectorAll('iframe').forEach((video) => {
       if (video !== event.target.a) {
         video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
@@ -19,12 +18,9 @@ class VideoEntry extends Component {
     });
   }
 
-  k(event) {
-    console.log('k ')
-
+  k(eMusicHandler) {
+    eMusicHandler()
   }
-
-
 
 // plays first video when EventsListEntry component is clicked
 // autoplay: https://developers.google.com/youtube/player_parameters
@@ -34,12 +30,11 @@ class VideoEntry extends Component {
       this.props.index === 0 ? opts.playerVars.autoplay = 1 : opts.playerVars.autoplay = 0;
       return (
         <YouTube
-          // className={this.props.isDisplayed}
           videoId={this.props.videoId}
           opts={opts}
           onPlay={this.pauseAllButPlaying}
-          onEnd={this.k}
-          onPause={console.log('paused')}
+          onEnd={()=>this.k(this.props.eMusicHandler)}
+          // onPause={()=>this.k(this.props)}
         />
       );
     }

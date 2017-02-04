@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import EventsList from './EventsList';
 import concerts from '../utilities/mockData';
-import playFirstSong from '../utilities/utils.js';
 
 class App extends Component {
   constructor() {
@@ -13,7 +12,12 @@ class App extends Component {
     };
   }
 
-  exploreMusicHandler = () => {
+  exploreMusicStart = () => {
+    let index = this.state.exploreMusic + 1 | 0;
+    this.setState({exploreMusic: index});
+  }
+
+  eMusicHandler = () => {
     let index = this.state.exploreMusic + 1 | 0;
     this.setState({exploreMusic: index});
   }
@@ -21,8 +25,9 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <button onClick={this.exploreMusicHandler}>Play Music</button>
-        <EventsList exploreMusic={this.state.exploreMusic} concerts={this.state.concerts} />
+        <button onClick={this.exploreMusicStart}>Play Music</button>
+        <EventsList concerts={[this.state.concerts[this.state.exploreMusic]]} />
+        <EventsList exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler} concerts={this.state.concerts} />
       </div>
     );
   }

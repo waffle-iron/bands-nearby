@@ -4,7 +4,7 @@ import EventsListEntry from './EventsListEntry';
 class EventsList extends Component {
 
   render() {
-    const { concerts, exploreMusic } = this.props;
+    const { concerts, exploreMusic, eMusicHandler } = this.props;
     return (
       <div ref={() => 'list'} className="events-list">
         <ul>
@@ -13,6 +13,7 @@ class EventsList extends Component {
               key={index}
               id={index}
               exploreMusic={exploreMusic}
+              eMusicHandler={eMusicHandler}
               titles={concerts[concert].title}
               ticketLink={concerts[concert].link}
               date={concerts[concert].date}

@@ -72,6 +72,10 @@ li {
   background-color: blue;
 }
 
+.exploreMusic-more-info-dropdown {
+  display: none;
+}
+
 .video {
   flex: 1;
   border-width: 5px;

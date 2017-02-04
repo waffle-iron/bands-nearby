@@ -4,7 +4,9 @@ const fetchURL = require('./fetch');
 const APIKey = require('./APIKeys');
 
 const getSoundsLike = (concertTitle, concertObj) => {
-  const URL = `http://ws.audioscrobbler.com/2.0?method=artist.getinfo&artist=${concertTitle}&api_key=${APIKey.LASTFM}&format=json`;
+  console.log(typeof concertTitle)
+  const searchTerm = concertTitle[0];
+  const URL = `http://ws.audioscrobbler.com/2.0?method=artist.getinfo&artist=${searchTerm}&api_key=${APIKey.LASTFM}&format=json`;
   return fetchURL(URL)
   .then((artistInfo) => {
     // lastFM's API returns 200 status code for artists not found error so not handled by fetch catch;
@@ -27,7 +29,9 @@ const getSoundsLike = (concertTitle, concertObj) => {
   })
   .then((lastFMObj) => {
     concertObj.similarArtists = lastFMObj.similarArtistsArray[0];
-    concertObj.artistSummary = lastFMObj.artistSummary[0];
+    if (!concertObj.artistSummary) {
+      concertObj.artistSummary = lastFMObj.artistSummary[0];
+    }
     return concertObj;
   })
   .catch(() => {

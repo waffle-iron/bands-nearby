@@ -1,8 +1,7 @@
 const getShows = require('./scraper.js');
 
-
 const getGoogleSearchResult = (concertTitle, concertObj) => {
-  const searchTerm = concertTitle.split(' ').join('+');
+  const searchTerm = concertTitle[0].split(' ').join('+');
   return getShows(`https://www.google.ca/search?q=+music+${searchTerm}`)
   .then((window) => {
     const googleSummary = window.document.querySelector('.st').textContent;
@@ -10,7 +9,7 @@ const getGoogleSearchResult = (concertTitle, concertObj) => {
     return firstLine;
   })
   .then((googleInfo) => {
-    if (concertObj.artistSummary === '') {
+    if (!concertObj.artistSummary) {
       concertObj.artistSummary = googleInfo;
       return concertObj;
     }

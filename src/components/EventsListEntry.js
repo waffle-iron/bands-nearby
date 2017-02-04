@@ -24,7 +24,7 @@ class EventsListEntry extends Component {
       }
 
   render() {
-    const { titles, link, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary } = this.props;
+    const { titles, ticketLink, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary } = this.props;
     const isDisplayed = this.addClass();
     const showCost = this.isCover(cost);
 
@@ -35,11 +35,10 @@ class EventsListEntry extends Component {
           <span className="headliner">{titles[0]}</span>
           <span className="other-bands"><TitleList titles={this.props.titles} /></span>
           <div>
-            <a href={link}>
-              <span className="venue">{venue}</span>
-              <span className="startTime">{startTime}pm</span>
-              <span className="cost">{showCost}</span>
-            </a>
+            <span className="venue">{venue}</span>
+            <span className="startTime">{startTime}pm</span>
+            <span className="cost">{showCost}</span>
+            <span className="tickets"><a href={ticketLink}>Tickets</a></span>
           </div>
           <div className="similar-artists">
             {similarArtists[0] && <SimilarArtistsList artists={similarArtists} />}

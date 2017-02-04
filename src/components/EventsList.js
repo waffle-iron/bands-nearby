@@ -12,7 +12,7 @@ class EventsList extends Component {
             <EventsListEntry
               key={index}
               titles={concerts[concert].title}
-              link={concerts[concert].link}
+              ticketLink={concerts[concert].link}
               date={concerts[concert].date}
               venue={concerts[concert].venue}
               cost={concerts[concert].cost}

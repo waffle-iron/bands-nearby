@@ -50,7 +50,7 @@ li {
   height: auto;
   width: 100%;
   opacity: 0.3;
-  margin-top: -5vh;
+  margin-top: -3vh;
   filter: blur(3px);
   overflow: hidden;
   /*filter: sepia(90%);*/

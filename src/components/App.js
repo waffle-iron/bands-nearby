@@ -8,26 +8,28 @@ class App extends Component {
     super();
     this.state = {
       concerts,
-      exploreMusic: -1,
+      exploreMusicIndex: 0,
+      exploreMusic: false,
     };
   }
 
   exploreMusicStart = () => {
-    let index = this.state.exploreMusic + 1 | 0;
-    this.setState({exploreMusic: index});
+    this.setState({exploreMusic: !this.state.exploreMusic})
   }
 
   eMusicHandler = () => {
-    let index = this.state.exploreMusic + 1 | 0;
-    this.setState({exploreMusic: index});
+    this.setState({exploreMusicIndex: this.state.exploreMusicIndex + 1});
   }
 
   render() {
     return (
       <div className="wrapper">
         <button onClick={this.exploreMusicStart}>Play Music</button>
-        <EventsList concerts={[this.state.concerts[this.state.exploreMusic]]} />
-        <EventsList exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler} concerts={this.state.concerts} />
+        <button onClick={this.exploreMusicStart}>Forward</button>
+        <button onClick={this.exploreMusicStart}>Back</button>
+
+        {this.state.exploreMusic && <EventsList concerts={[this.state.concerts[this.state.exploreMusicIndex]]}  exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler}/>}
+        {!this.state.exploreMusic && <EventsList concerts={this.state.concerts}/>}
       </div>
     );
   }

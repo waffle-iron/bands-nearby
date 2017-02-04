@@ -3,7 +3,7 @@ import VideoEntry from './VideoEntry';
 
 class VideoList extends Component {
   render() {
-    const { youTube, photo, isDisplayed, eMusicHandler } = this.props;
+    const { youTube, photo, isRendered, eMusicHandler } = this.props;
     return (
       <ul>
         {youTube.map((video, index) => {
@@ -13,7 +13,7 @@ class VideoList extends Component {
               eMusicHandler={eMusicHandler}
               index={index}
               thumbnail={photo}
-              isDisplayed={isDisplayed}
+              isRendered={isRendered}
               key={index}
             />
           );

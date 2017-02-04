@@ -26,7 +26,7 @@ class VideoEntry extends Component {
 // autoplay: https://developers.google.com/youtube/player_parameters
   renderHelper() {
     const opts = { height: 'auto', width: '100%', playerVars: { autoplay: 0 }};
-    if (this.props.isDisplayed) {
+    if (this.props.isRendered) {
       this.props.index === 0 ? opts.playerVars.autoplay = 1 : opts.playerVars.autoplay = 0;
       return (
         <YouTube

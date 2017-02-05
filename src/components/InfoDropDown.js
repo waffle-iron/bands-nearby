@@ -11,7 +11,8 @@ class InfoDropDown extends Component {
     let style;
     let isOpen;
     exploreMusic ? style = 'exploreMusicIndex-more-info-dropdown' : style = 'more-info-dropdown';
-    exploreMusic ? isOpen = true : isOpen = false;
+    exploreMusic ? isOpen = true : null;
+    toggled ? isOpen = true : null;
 
     return (
       <div className={style} className={isDisplayed} >
@@ -20,7 +21,7 @@ class InfoDropDown extends Component {
             <p>{artistSummary}</p>
           </div>
         </div>
-        <VideoList photo={photo} youTube={youTube} isRendered={isOpen} eMusicHandler={eMusicHandler}/>
+        <VideoList photo={photo} youTube={youTube} isRendered={isOpen} eMusicHandler={eMusicHandler} />
       </div>
     );
   }

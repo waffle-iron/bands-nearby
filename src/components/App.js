@@ -17,18 +17,32 @@ class App extends Component {
     this.setState({exploreMusic: !this.state.exploreMusic})
   }
 
+  eMusicIndexIncrement = () => {
+    if (this.state.exploreMusicIndex < this.state.concerts.length -1) {
+      this.setState({exploreMusicIndex: this.state.exploreMusicIndex + 1});
+    }
+  }
+
+  eMusicIndexDecrement = () => {
+    if (this.state.exploreMusicIndex > 0) {
+      this.setState({exploreMusicIndex: this.state.exploreMusicIndex - 1});
+    }
+  }
+
   eMusicHandler = () => {
-    this.setState({exploreMusicIndex: this.state.exploreMusicIndex + 1});
+    this.eMusicIndexIncrement();
   }
 
   render() {
     return (
       <div className="wrapper">
         <button onClick={this.exploreMusicStart}>Play Music</button>
-        <button onClick={this.exploreMusicStart}>Forward</button>
-        <button onClick={this.exploreMusicStart}>Back</button>
-
-        {this.state.exploreMusic && <EventsList concerts={[this.state.concerts[this.state.exploreMusicIndex]]}  exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler}/>}
+        {this.state.exploreMusic && <div className="exploreMusicPlayer">
+          <button onClick={this.eMusicIndexIncrement}>Forward</button>
+          <button onClick={this.eMusicIndexDecrement}>Back</button>
+          <button onClick={this.eMusicPause}>Pause</button>
+           <EventsList concerts={[this.state.concerts[this.state.exploreMusicIndex]]}  exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler}/>
+        </div>}
         {!this.state.exploreMusic && <EventsList concerts={this.state.concerts}/>}
       </div>
     );

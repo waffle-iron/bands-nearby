@@ -45,12 +45,12 @@ class EventsListEntry extends Component {
           <img className="concert-photo" src={photo} alt={photo} />
         </div>
         <InfoDropDown
-          exploreMusic={exploreMusic}
           eMusicHandler={eMusicHandler}
           id={id}
           artistSummary={artistSummary} photo={photo}
           youTube={youTube} toggled={this.state.toggled}
           isDisplayed={isDisplayed}
+          exploreMusic={exploreMusic}
         />
       </li>
     );

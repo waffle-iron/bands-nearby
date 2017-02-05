@@ -18,7 +18,7 @@ class VideoEntry extends Component {
     });
   }
 
-  k(eMusicHandler) {
+  eMusicHandler(eMusicHandler) {
     eMusicHandler()
   }
 
@@ -33,8 +33,8 @@ class VideoEntry extends Component {
           videoId={this.props.videoId}
           opts={opts}
           onPlay={this.pauseAllButPlaying}
-          onEnd={()=>this.k(this.props.eMusicHandler)}
-          // onPause={()=>this.k(this.props)}
+          onEnd={()=>this.eMusicHandler(this.props.eMusicHandler)}
+          // onPause={()=>this.eMusicHandler(this.props.eMusicHandler)}
         />
       );
     }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {findMinMax, costMatches, typeaheadMatches, filteredMatches, displayMatches} from '../utilities/filterHelpers';
-// import {pipe} from '../utilities/utils';
+import debounce from 'lodash/debounce';
 
 class Filters extends Component {
   constructor() {
@@ -23,24 +23,24 @@ class Filters extends Component {
     return maxMin;
   }
 
-
   handleUpdate = (e) => {
+    console.log('handler caled')
     displayMatches(this.props.concertData, this.state.typeAheadString, this.state.searchedCost, this.props.handleFilters);
   }
 
   handleInput = (e) => {
     this.setState({[e.target.name]: e.target.value})
     this.handleUpdate();
+
   }
 
   render() {
-    console.log(this.state)
     const { concertData, handleFilters } = this.props;
     return (
       <div>
         <label>Search</label>
         <input name="typeAheadString" type="text" onChange={(e)=>this.handleInput(e)} onKeyUp={(e)=>this.handleUpdate(e)} placeholder="Band/SoundsLike/Venue"/>
-        $<input name="searchedCost" type="range"  onChange={(e)=>this.handleInput(e)} min={this.state.min} max={this.state.max} value={this.state.searchedCost}/>$$$
+        $<input name="searchedCost" type="range"  onChange={(e)=>this.handleInput(e)} onTouchEnd={(e)=>this.handleInput(e)} onMouseUp={(e)=>this.handleInput(e)} min={this.state.min} max={this.state.max} value={this.state.searchedCost}/>$$$
       </div>
     )
   }

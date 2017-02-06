@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import EventsList from './EventsList';
-import concerts from '../utilities/mockData';
+import concertData from '../utilities/mockData';
+import {sortByDate} from '../utilities/filterHelpers';
+import Filters from './Filters';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      concerts,
+      concertData,
+      concerts: {},
       exploreMusicIndex: 0,
       exploreMusic: false,
     };
+  }
+
+  componentDidMount(){
+    this.setState({concerts: sortByDate(this.state.concertData)})
   }
 
   exploreMusicStart = () => {
@@ -33,6 +40,10 @@ class App extends Component {
     this.eMusicIndexIncrement();
   }
 
+  handleFilters = (filtered) => {
+    this.setState({concerts: filtered})
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -40,10 +51,13 @@ class App extends Component {
         {this.state.exploreMusic && <div className="exploreMusicPlayer">
           <button onClick={this.eMusicIndexIncrement}>Forward</button>
           <button onClick={this.eMusicIndexDecrement}>Back</button>
-          <button onClick={this.eMusicPause}>Pause</button>
            <EventsList concerts={[this.state.concerts[this.state.exploreMusicIndex]]}  exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler}/>
         </div>}
-        {!this.state.exploreMusic && <EventsList concerts={this.state.concerts}/>}
+        {!this.state.exploreMusic && <div>
+          <Filters concertData={this.state.concertData} handleFilters={this.handleFilters}/>
+          <EventsList concerts={this.state.concerts}/>
+        </div>
+        }
       </div>
     );
   }

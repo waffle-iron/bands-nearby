@@ -35,6 +35,7 @@ class Filters extends Component {
   }
 
   boundFilter = (value) => {
+
     return (...args) => {
       const [concerts, typeAheadString, searchedCost] = [...args];
       const filterByTypeahead = typeaheadMatches(this.props.concertData, this.state.typeAheadString);
@@ -42,12 +43,13 @@ class Filters extends Component {
       this.setMinMax(filterByTypeahead);
       return costMatches(filterByTypeahead, value)
     }
+
   }
 
   handleUpdate = (val) => {
     const test = this.boundFilter(val)
 
-    this.props.handleFilters(test(this.state.concertData, this.state.typeAheadString, this.state.searchedCost));
+    this.props.handleFilters(test(this.state.concertData, this.state.typeAheadString,  this.state.searchedCost));
     this.minCostCorrection(this.state.min, this.state.searchedCost);
   }
 

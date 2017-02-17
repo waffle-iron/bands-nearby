@@ -9,8 +9,8 @@ class VideoEntry extends Component {
     };
   }
 
-  // pauses all videos but current using youTube api
-  pauseAllButPlaying(event) {
+  // pauses all videos but current video using youTube api
+  pauseAllButPlaying = (event) => {
     document.querySelectorAll('iframe').forEach((video) => {
       if (video !== event.target.a) {
         video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
@@ -18,23 +18,23 @@ class VideoEntry extends Component {
     });
   }
 
-  eMusicHandler(eMusicHandler) {
-    eMusicHandler()
+  eMusicHandler = (eMusicHandler) => {
+    eMusicHandler();
   }
 
 // plays first video when EventsListEntry component is clicked
 // autoplay: https://developers.google.com/youtube/player_parameters
   renderHelper() {
-    const opts = { height: 'auto', width: '100%', playerVars: { autoplay: 0 }};
+    const opts = { height: 'auto', width: '100%', playerVars: { autoplay: 0 } };
     if (this.props.isRendered) {
       this.props.index === 0 ? opts.playerVars.autoplay = 1 : opts.playerVars.autoplay = 0;
       return (
         <YouTube
+          ref={(input) => { this.rangeInput = input; }}
           videoId={this.props.videoId}
           opts={opts}
           onPlay={this.pauseAllButPlaying}
-          onEnd={()=>this.eMusicHandler(this.props.eMusicHandler)}
-          // onPause={()=>this.eMusicHandler(this.props.eMusicHandler)}
+          onEnd={() => this.eMusicHandler(this.props.eMusicHandler)}
         />
       );
     }

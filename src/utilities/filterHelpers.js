@@ -25,14 +25,14 @@ export const findMinMax = (concerts) => {
   },[Infinity, -Infinity])
 };
 
-export const costMatches = (concerts, maxPrice) => {
+export const filterByCost = (concerts, maxPrice) => {
   if (!maxPrice) {
     maxPrice = Infinity;
   }
   return concerts.filter(concert => concert.cost <= maxPrice);
 };
 
-export const typeaheadMatches = (concerts, wordToMatch) => {
+export const filterByTypeahead = (concerts, wordToMatch) => {
   return concerts.filter((concert) => {
     const regex = new RegExp(wordToMatch, 'gi');
     return concert.title.join('').match(regex) || concert.similarArtists.join('').match(regex) || concert.venue.match(regex);
@@ -40,8 +40,8 @@ export const typeaheadMatches = (concerts, wordToMatch) => {
 };
 
 export const filteredMatches = (concerts, wordToMatch, maxPrice) => {
-  const typeMatch = typeaheadMatches(concerts, wordToMatch);
-  return costMatches(typeMatch, maxPrice);
+  const typeMatch = filterByTypeahead(concerts, wordToMatch);
+  return filterByCost(typeMatch, maxPrice);
 }
 
 export const displayMatches = (concertData, typeAheadSearch, costSearch, handleFilters) => {

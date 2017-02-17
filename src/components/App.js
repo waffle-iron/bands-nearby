@@ -16,7 +16,7 @@ class App extends Component {
     };
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.setState({concerts: sortByDate(this.state.concertData)})
   }
 
@@ -54,7 +54,7 @@ class App extends Component {
            <EventsList concerts={[this.state.concerts[this.state.exploreMusicIndex]]}  exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler}/>
         </div>}
         {!this.state.exploreMusic && <div>
-          <Filters concertData={this.state.concertData} handleFilters={this.handleFilters}/>
+          <Filters concertData={this.state.concertData} concerts={this.state.concerts} handleFilters={this.handleFilters}/>
           <EventsList concerts={this.state.concerts}/>
         </div>
         }

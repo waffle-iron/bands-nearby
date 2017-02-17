@@ -12,17 +12,16 @@ class Filters extends Component {
     };
   }
   componentWillMount() {
-    // this.setMinMax(this.props.concertData);
+    this.setMinMax(this.props.concertData);
   }
 
   componentDidMount() {
-    this.rangeInput.value = this.state.max;
-    // this.setState({searchedCost: this.state.max});
+    this.setState({searchedCost: this.state.max});
   }
 
   // handles value update when min/max range changes from text filter
   componentDidUpdate() {
-    if (!this.state.costIsSet) {
+    if (!this.state.costIsSet && this.rangeInput) {
       this.rangeInput.value = this.state.max;
     }
   }
@@ -72,15 +71,20 @@ class Filters extends Component {
       <div>
         <label>Search</label>
         <input name="typeAheadString" type="text" onChange={(e)=>this.handleInput(e)} placeholder="Band/SoundsLike/Venue"/>
-        {this.state.min !== Infinity && this.props.concerts[0] &&
+        {this.state.min !== Infinity && this.props.concerts[0] && this.state.max !== this.state.min &&
         <div>
           <div>
             ${this.state.searchedCost}
           </div>
           ${this.state.min}
-          <input key="editor1" name="searchedCost" type="range"  onChange={(e)=>this.handleInput(e)} onTouchEnd={(e)=>this.handleInput(e)} onMouseUp={(e)=>this.handleInput(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }}/>
+          <input name="searchedCost" type="range"  onChange={(e)=>this.handleInput(e)} onTouchEnd={(e)=>this.handleInput(e)} onMouseUp={(e)=>this.handleInput(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }}/>
           ${this.state.max}
         </div>}
+        {this.state.max === this.state.min &&  this.props.concerts[0] &&
+          <div>
+            ${this.state.searchedCost}
+          </div>
+        }
       </div>
     )
   }

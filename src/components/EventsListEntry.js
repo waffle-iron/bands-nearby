@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 
 import SimilarArtistsList from './SimilarArtistsList'
 import TitleList from './TitleList'
@@ -9,7 +10,13 @@ class EventsListEntry extends Component {
     super();
     this.state = {
       toggled: false,
+      ele: null,
     };
+  }
+
+  componentDidMount() {
+    window.document.addEventListener('scroll', () => this.isVisible(this.state.ele), true);
+    this.setState({ele: ReactDOM.findDOMNode(this)});
   }
   toggle() {
     this.setState({ toggled: !this.state.toggled });
@@ -20,11 +27,22 @@ class EventsListEntry extends Component {
   isCover(cost) {
     return typeof cost === 'number' && cost === cost ? cost = `$${cost}` : cost = 'No Cover';
   }
+
+  isVisible = (el) => {
+     if (el){
+       const elemTop = el.getBoundingClientRect().top;
+       const elemBottom = el.getBoundingClientRect().bottom;
+       const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+       console.log(isVisible, this.props.titles[0])
+       return isVisible;
+     }
+  }
+
+
   render() {
     const { titles, ticketLink, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary, id, exploreMusic, eMusicHandler } = this.props;
     const isDisplayed = this.addClass();
     const showCost = this.isCover(cost);
-
     return (
       <li className="event-list-entry" onClick={() => this.toggle()}>
         <div className="show-info">

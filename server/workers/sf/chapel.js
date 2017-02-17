@@ -2,7 +2,7 @@ const jsdom = require('jsdom');
 const getShows = require('../scraper.js');
 const bluebirdPromise = require('bluebird');
 
-const chapelScraper = (window) => {
+const chapelScraper = (window, venue) => {
   const getSummaryLinks = (window) => {
     const summaryLinkElements = window.document.querySelectorAll('a.ds-listing-event-title.url.summary');
     const summaryLinkElementsArray = Array.from(summaryLinkElements);
@@ -76,7 +76,7 @@ const chapelScraper = (window) => {
         scrapedLink === null ? link = null : link = link.href;
 
         const show = {};
-        show.venue = 'The Chapel';
+        show.venue = venue;
         show.title = title;
         show.headliner = headliner;
         show.date = date;

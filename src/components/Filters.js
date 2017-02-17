@@ -5,10 +5,10 @@ class Filters extends Component {
   constructor() {
     super();
     this.state = {
-      costIsSet: false,
-      searchedCost: 65,
-      min: false,
-      max: false,
+      isCostSpecified: null,
+      searchedCost: null,
+      min: null,
+      max: null,
     };
   }
   componentWillMount() {
@@ -16,12 +16,12 @@ class Filters extends Component {
   }
 
   componentDidMount() {
-    this.setState({searchedCost: this.state.max});
+    this.setState({ searchedCost: this.state.max });
   }
 
   // handles value update when min/max range changes from text filter
   componentDidUpdate() {
-    if (!this.state.costIsSet && this.rangeInput) {
+    if (!this.state.isCostSpecified && this.rangeInput) {
       this.rangeInput.value = this.state.max;
     }
   }
@@ -33,35 +33,37 @@ class Filters extends Component {
     return maxMin;
   }
 
-  // handles cost display update when min/max range changes from text filter and range
-  displayCost = (searchedCost, max) => {
-    if (max !== -Infinity && searchedCost > max | !this.state.costIsSet) {
+  // returns searchedCost or max if no search cost is entered
+  searchedCostOrMax = (searchedCost, max) => {
+    if (max !== -Infinity && searchedCost > max | !this.state.isCostSpecified) {
       return max;
     }
     return searchedCost;
   }
 
+  // returns function bound with latest input; handles React asynch state keeping query in synch
+  // TODO: add aditional filters here:
   boundFilter = (name, boundValue) => {
     return (search) => {
       search[name] = boundValue;
       const typeaheadMatches = filterByTypeahead(search.concerts, search.typeAheadString);
       const maxMin = this.setMinMax(typeaheadMatches);
-      const val = this.displayCost(search.searchedCost, maxMin[1]);
-      this.setState({searchedCost: val})
-      return filterByCost(typeaheadMatches, search.searchedCost)
-    }
+      const costToDisplay = this.searchedCostOrMax(search.searchedCost, maxMin[1]);
+      this.setState({ searchedCost: costToDisplay });
+      return filterByCost(typeaheadMatches, search.searchedCost);
+    };
   }
 
-  handleUpdate = (name, val) => {
-    const boundFilter = this.boundFilter(name, val)
-    this.props.handleFilters(boundFilter({concerts: this.props.concertData, typeAheadString: this.state.typeAheadString,  searchedCost: this.state.searchedCost}));
+  handleUpdate = (inputName, inputValue) => {
+    const boundFilter = this.boundFilter(inputName, inputValue);
+    this.props.handleFilters(boundFilter({ concerts: this.props.concertData, typeAheadString: this.state.typeAheadString, searchedCost: this.state.searchedCost }));
   }
 
   handleInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
     this.handleUpdate(e.target.name, e.target.value);
     if (e.target.name === 'searchedCost') {
-      this.setState({costIsSet: true, rangeValue: e.target.value})
+      this.setState({ isCostSpecified: true });
     }
   }
 
@@ -69,24 +71,25 @@ class Filters extends Component {
     const { concertData, handleFilters } = this.props;
     return (
       <div>
-        <label>Search</label>
-        <input name="typeAheadString" type="text" onChange={(e)=>this.handleInput(e)} placeholder="Band/SoundsLike/Venue"/>
-        {this.state.min !== Infinity && this.props.concerts[0] && this.state.max !== this.state.min &&
+        <label htmlFor="typeAheadString">Search</label>
+        <input name="typeAheadString" id="typeAheadString" type="text" onChange={e => this.handleInput(e)} placeholder="Band/SoundsLike/Venue" />
+        {
+          this.state.min !== Infinity && this.props.concerts[0] && this.state.max !== this.state.min &&
+          <div>
+            <div>
+              ${this.state.searchedCost}
+            </div>
+            ${this.state.min}
+            <input name="searchedCost" type="range" onChange={e => this.handleInput(e)} onTouchEnd={e => this.handleInput(e)} onMouseUp={e => this.handleInput(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
+            ${this.state.max}
+          </div>}
+        {this.state.max === this.state.min && this.props.concerts[0] &&
         <div>
-          <div>
-            ${this.state.searchedCost}
-          </div>
-          ${this.state.min}
-          <input name="searchedCost" type="range"  onChange={(e)=>this.handleInput(e)} onTouchEnd={(e)=>this.handleInput(e)} onMouseUp={(e)=>this.handleInput(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }}/>
-          ${this.state.max}
-        </div>}
-        {this.state.max === this.state.min &&  this.props.concerts[0] &&
-          <div>
-            ${this.state.searchedCost}
-          </div>
+          ${this.state.searchedCost}
+        </div>
         }
       </div>
-    )
+    );
   }
 }
 

@@ -1,7 +1,5 @@
 export const sortByDate = (concerts) => {
-  const makeDateArray = (string) => {
-    return string.split('-');
-  }
+  const makeDateArray = string => string.split('-');
   return concerts.sort((a, b) => {
     const show1 = makeDateArray(a.date);
     const show2 = makeDateArray(b.date);
@@ -22,7 +20,7 @@ export const findMinMax = (concerts) => {
     item.cost < costArray[0] ? costArray[0] = item.cost : null;
     item.cost > costArray[1] ? costArray[1] = item.cost : null;
     return costArray;
-  },[Infinity, -Infinity])
+  }, [Infinity, -Infinity]);
 };
 
 export const filterByCost = (concerts, maxPrice) => {
@@ -32,6 +30,7 @@ export const filterByCost = (concerts, maxPrice) => {
   return concerts.filter(concert => concert.cost <= maxPrice);
 };
 
+// add typeahead filters here:
 export const filterByTypeahead = (concerts, wordToMatch) => {
   return concerts.filter((concert) => {
     const regex = new RegExp(wordToMatch, 'gi');
@@ -42,12 +41,12 @@ export const filterByTypeahead = (concerts, wordToMatch) => {
 export const filteredMatches = (concerts, wordToMatch, maxPrice) => {
   const typeMatch = filterByTypeahead(concerts, wordToMatch);
   return filterByCost(typeMatch, maxPrice);
-}
+};
 
 export const displayMatches = (concertData, typeAheadSearch, costSearch, handleFilters) => {
   const filtered = filteredMatches(concertData, typeAheadSearch, costSearch);
-  return handleFilters(filtered)
-}
+  return handleFilters(filtered);
+};
 
 
 //

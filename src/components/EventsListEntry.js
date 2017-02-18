@@ -18,7 +18,10 @@ class EventsListEntry extends Component {
     window.document.addEventListener('scroll', () => this.isVisible(this.state.ele), true);
     this.setState({ele: ReactDOM.findDOMNode(this)});
   }
-  toggle() {
+  toggle(e) {
+    if (e.target.tagName.toLowerCase() === "a") {
+      return;
+    }
     this.setState({ toggled: !this.state.toggled });
   }
   addClass() {
@@ -38,28 +41,37 @@ class EventsListEntry extends Component {
      }
   }
 
+  handleSmallScreen = (headliner) => {
+    if (!window.matchMedia("(min-width: 667px)").matches) {
+      return headliner.split(' ').slice(0, 3).join(' ');
+    }
+    return headliner;
+  }
+
 
   render() {
     const { titles, ticketLink, date, venue, cost, photo, startTime, youTube, similarArtists, artistSummary, id, exploreMusic, eMusicHandler } = this.props;
+    const headliner = this.handleSmallScreen(titles[0]);
     const isDisplayed = this.addClass();
     const showCost = this.isCover(cost);
     return (
-      <li className="event-list-entry" onClick={() => this.toggle()}>
-        <div className="show-info">
-          {/* <div className="date">{date}</div> */}
-          <div className="venue">{venue}</div>
-          <span className="headliner">{titles[0]}</span>
-          <span className="other-bands"><TitleList titles={this.props.titles} /></span>
-          <div>
-            <span className="startTime">{startTime}pm</span>
-            <span className="cost">{showCost}</span>
-            {showCost !== 'No Cover' && <span className="tickets"><a href={ticketLink}>Tickets</a></span>}
+      <li className="event-list-entry">
+        <div className="show-info"  onClick={e => this.toggle(e)}>
+          <div className="hover-hilight">
+            {showCost !== 'No Cover' && <div className="tickets"><a href={ticketLink}>Tickets<span className="cost">{showCost}</span></a></div>}
+            {/* <div className="date">{date}</div> */}
+            <div className="headliner">{headliner}</div>
+            <span className="other-bands"><TitleList titles={this.props.titles} /></span>
+            <div>
+              <span className="venue">{venue}</span>
+              <span className="startTime">{startTime}pm</span>
+            </div>
           </div>
           <div className="similar-artists">
             {similarArtists[0] && <SimilarArtistsList artists={similarArtists} />}
           </div>
         </div>
-        <div className="concert-photo-wrapper">
+        <div className="concert-photo-wrapper" >
           <img className="concert-photo" src={photo} alt={photo} />
         </div>
         <InfoDropDown

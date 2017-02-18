@@ -1,11 +1,21 @@
 body {
   margin: 0;
   padding: 0;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 a {
   text-decoration: none;
   color: #2E0854;
+  z-index: 99;
+  position: relative;
 }
 
 ul {
@@ -26,10 +36,22 @@ li {
 
 .show {
   display: inline;
+      transition: all 0.3s ease;
 }
 
 .hide {
   display: none;
+      transition: all 0.3s ease;
+}
+
+.show-info {
+  height: 30vh;
+  position: absolute;
+  z-index: 1;
+  margin-top: 2vh;
+  margin-left: 3vw;
+  width: 90%;
+  overflow: hidden;
 }
 
 
@@ -38,9 +60,8 @@ li {
   z-index: -1;
   margin: 0;
   padding: 0;
-  height: 26vh;
+  height: 30vh;
   overflow: hidden;
-
 }
 
 .concert-photo {
@@ -53,23 +74,36 @@ li {
   overflow: hidden;
 }
 
-.event-list-entry:hover .concert-photo {
+.event-list-entry:active .concert-photo {
   filter: blur(1px);
   opacity: 0.4;
-  transition: all 0.3s ease;
 }
 
-.event-list-entry:hover .show-info {
+.event-list-entry .hover-hilight:active  {
   color: #220a37;
+  font-size: 105.5%;
 }
-
-
 
 .artist-summary {
   width: 90%;
   margin: auto;
   line-height: 150%;
   color: black;
+}
+
+.raised {
+  transform: translateY(-200px);
+  transition: all 0.15s cubic-bezier(.18,-0.09,.73,1.36)
+}
+
+.lowered {
+  transform: translateY(0%);
+  transition: all 0.15s cubic-bezier(.18,-0.09,.73,1.36)
+
+}
+
+.dropdown-container {
+      overflow-y: hidden;
 
 }
 
@@ -77,8 +111,9 @@ li {
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  background-color: blue;
 }
+
+
 
 .exploreMusicIndex-more-info-dropdown {
   display: none;
@@ -91,15 +126,6 @@ li {
   background-color: pink;
 }
 
-.show-info {
-  height: 23vh;
-  position: absolute;
-  z-index: 1;
-  margin-top: 2vh;
-  margin-left: 3vw;
-  width: 90%;
-  overflow: hidden;
-}
 
 .date {
   font-size: 2vh;
@@ -110,6 +136,11 @@ li {
   margin-right: 4vw;
   font-size: 130%;
   font-family: 'Monoton', cursive;
+	overflow: hidden;
+}
+
+.supporting-bands-title {
+  font-size: 95%;
 }
 
 .venue {
@@ -125,21 +156,52 @@ li {
 
 .cost {
   font-size: 0.7em;
+  text-align: right;
+  padding-left: 1%;
+}
+
+
+.tickets {
+  text-align: right;
+}
+
+.cost {
+  font-size: 100%;
+  margin-left: 0.6%;
+}
+
+.tickets:hover {
+  font-weight: bold;
 }
 
 .similar-artists {
   margin-top: 1vh;
   font-size: 0.5em;
   font-style: italic;
-  opacity: 0.5;
+  font-stretch: ultra-condensed;
+  opacity: 0.65;
 }
 
-.tickets {
-  text-align: right;
+
+.sounds-like-container {
+  display: flex;
+  font-stretch: extra-condensed;
+  font-size: 130%
 }
 
-.tickets:hover {
-  font-weight: bold;
+.sounds-like {
+  flex: 1 ;
+  margin-right: 0.2%;
+}
+
+.sounds-like-artist-container {
+  flex: 3.5;
+}
+
+.sounds-like-artist-breaker {
+  opacity: .4;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 @media screen
@@ -180,13 +242,34 @@ li {
       font-size: 100%;
     }
 
-    .cost {
-      font-size: 100%;
-    }
-
     .similar-artists {
       margin-top: 3vh;
       font-size: 100%;
     }
 
+    .sounds-like-container {
+      font-size: 100%;
+    }
+
+    .sounds-like {
+      flex: 1.5 ;
+    }
+
+    .sounds-like-artist-container {
+      flex: 5;
+      width: 100%
+    }
+
+
+    .event-list-entry:hover .concert-photo {
+      filter: blur(1px);
+      opacity: 0.4;
+      transition: all 0.3s ease;
+    }
+
+    .event-list-entry:hover .show-info {
+      color: #220a37;
+      font-size: 101%;
+      transition: all 0.2s ease;
+    }
 }

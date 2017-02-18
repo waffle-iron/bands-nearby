@@ -5,9 +5,15 @@ class SimilarArtistsList extends Component {
   render() {
     const {artists} = this.props;
     return (
-      <div>
-        <span>Sounds Like:</span>
-          {artists.map(artist => <span key={artist}>{artist}</span>)}
+
+
+      <div className="sounds-like-container">
+        <span className="sounds-like">Sounds Like:</span>
+          <div className="sounds-like-artist-container">
+            {artists.map((artist, index, collection) => <span key={artist} className="sounds-like-artist">{artist}
+              {index !== collection.length -1 && <span className="sounds-like-artist-breaker">·</span>}
+            </span>)}
+          </div>
       </div>
 
     )

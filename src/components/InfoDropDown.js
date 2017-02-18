@@ -14,7 +14,16 @@ class InfoDropDown extends Component {
     exploreMusic ? isOpen = true : null;
     toggled ? isOpen = true : null;
 
+    let slidein;
+    if (!toggled | !isOpen) {
+      slidein = 'raised'
+    } else {
+      slidein = 'lowered';
+    }
+
     return (
+      <div className="dropdown-container">
+      <div className={slidein}>
       <div className={style} className={isDisplayed} >
         <div className="artist-summary-container">
           <div className="artist-summary">
@@ -23,6 +32,8 @@ class InfoDropDown extends Component {
         </div>
         <VideoList photo={photo} youTube={youTube} isRendered={isOpen} eMusicHandler={eMusicHandler} />
       </div>
+        </div>
+        </div>
     );
   }
 }

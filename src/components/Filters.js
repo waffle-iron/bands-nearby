@@ -1,5 +1,7 @@
+import debounce from 'lodash/debounce';
 import React, { Component } from 'react';
 import { findMinMax, filterByCost, filterByTypeahead } from '../utilities/filterHelpers';
+import { isSmallScreen } from '../utilities/utils'
 
 class Filters extends Component {
   constructor() {
@@ -10,12 +12,15 @@ class Filters extends Component {
       min: null,
       max: null,
     };
+     this.debouncedHandleInput = debounce(this.handleInput, 15);
   }
   componentWillMount() {
+    console.log('component will mount')
     this.setMinMax(this.props.concertData);
   }
 
   componentDidMount() {
+    console.log('component did mount')
     this.setState({ searchedCost: this.state.max });
   }
 
@@ -60,11 +65,17 @@ class Filters extends Component {
   }
 
   handleInput = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    console.log('handle Input called')
     this.handleUpdate(e.target.name, e.target.value);
-    if (e.target.name === 'searchedCost') {
+  }
+
+  debouncedHander = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    if (e.target.name === 'searchedCost' && !this.state.isCostSpecified) {
       this.setState({ isCostSpecified: true });
     }
+    e.persist()
+    this.debouncedHandleInput(e);
   }
 
   render() {
@@ -80,7 +91,12 @@ class Filters extends Component {
               ${this.state.searchedCost}
             </div>
             ${this.state.min}
-            <input name="searchedCost" type="range" onChange={e => this.handleInput(e)} onTouchEnd={e => this.handleInput(e)} onMouseUp={e => this.handleInput(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
+            {!isSmallScreen() &&
+              <input name="searchedCost" type="range" onChange={e => this.debouncedHander(e)} onTouchEnd={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
+            }
+            {isSmallScreen() &&
+              <input name="searchedCost" type="range" onTouchEnd={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
+            }
             ${this.state.max}
           </div>}
         {this.state.max === this.state.min && this.props.concerts[0] &&

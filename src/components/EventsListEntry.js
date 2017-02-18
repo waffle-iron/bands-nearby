@@ -77,6 +77,7 @@ class EventsListEntry extends Component {
         <InfoDropDown
           eMusicHandler={eMusicHandler}
           id={id}
+          key={id}
           artistSummary={artistSummary} photo={photo}
           youTube={youTube} toggled={this.state.toggled}
           isDisplayed={isDisplayed}

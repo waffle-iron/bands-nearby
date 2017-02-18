@@ -33,7 +33,7 @@ class EventsListEntry extends Component {
        const elemTop = el.getBoundingClientRect().top;
        const elemBottom = el.getBoundingClientRect().bottom;
        const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-       console.log(isVisible, this.props.titles[0])
+      //  console.log(isVisible, this.props.titles[0])
        return isVisible;
      }
   }
@@ -46,11 +46,11 @@ class EventsListEntry extends Component {
     return (
       <li className="event-list-entry" onClick={() => this.toggle()}>
         <div className="show-info">
-          <div className="date">{date}</div>
+          {/* <div className="date">{date}</div> */}
+          <div className="venue">{venue}</div>
           <span className="headliner">{titles[0]}</span>
           <span className="other-bands"><TitleList titles={this.props.titles} /></span>
           <div>
-            <span className="venue">{venue}</span>
             <span className="startTime">{startTime}pm</span>
             <span className="cost">{showCost}</span>
             {showCost !== 'No Cover' && <span className="tickets"><a href={ticketLink}>Tickets</a></span>}

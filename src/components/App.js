@@ -20,6 +20,10 @@ class App extends Component {
     this.setState({concerts: sortByDate(this.state.concertData)})
   }
 
+  componentDidMount(){
+    document.addEventListener("touchstart", function(){}, true);
+  }
+
   exploreMusicStart = () => {
     this.setState({exploreMusic: !this.state.exploreMusic})
   }

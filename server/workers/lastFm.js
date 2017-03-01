@@ -4,7 +4,6 @@ const fetchURL = require('./fetch');
 const APIKey = require('./APIKeys');
 
 const getSoundsLike = (concertTitle, concertObj) => {
-  console.log(typeof concertTitle)
   const searchTerm = concertTitle[0];
   const URL = `http://ws.audioscrobbler.com/2.0?method=artist.getinfo&artist=${searchTerm}&api_key=${APIKey.LASTFM}&format=json`;
   return fetchURL(URL)

@@ -20,7 +20,6 @@ class TitleList extends Component {
           {
             titles.reduce((acc, title, index) => {
               if (index !== 0) {
-                console.log(acc)
                 acc.push(<span key={index} className="supporting-bands-title">{title}</span>);
               }
               return acc;

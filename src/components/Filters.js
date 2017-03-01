@@ -15,12 +15,10 @@ class Filters extends Component {
      this.debouncedHandleInput = debounce(this.handleInput, 15);
   }
   componentWillMount() {
-    console.log('component will mount')
     this.setMinMax(this.props.concertData);
   }
 
   componentDidMount() {
-    console.log('component did mount')
     this.setState({ searchedCost: this.state.max });
   }
 
@@ -65,12 +63,12 @@ class Filters extends Component {
   }
 
   handleInput = (e) => {
-    console.log('handle Input called')
+    this.setState({ [e.target.name]: e.target.value });
     this.handleUpdate(e.target.name, e.target.value);
   }
 
   debouncedHander = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    // this.setState({ [e.target.name]: e.target.value });
     if (e.target.name === 'searchedCost' && !this.state.isCostSpecified) {
       this.setState({ isCostSpecified: true });
     }
@@ -78,33 +76,54 @@ class Filters extends Component {
     this.debouncedHandleInput(e);
   }
 
-  render() {
-    const { concertData, handleFilters } = this.props;
+  isCostActive = () => {
+    console.log(this.state.min, 'min')
+    if (this.state.min !== Infinity && this.props.concerts[0] && this.state.max !== this.state.min) {
+      return 'searched-cost-active';
+    } else if (this.state.min === Infinity) {
+      return 'searched-cost-hide';
+    }
+    return 'searched-cost-inactive';
+  }
+
+  costRenderHelper = () => {
+    if (isSmallScreen()) {
+      return (
+        <input name="searchedCost" type="range" className="cost-input" onTouchEnd={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
+      );
+    }
     return (
-      <div>
-        <label htmlFor="typeAheadString">Search</label>
-        <input name="typeAheadString" id="typeAheadString" type="text" onChange={e => this.handleInput(e)} placeholder="Band/SoundsLike/Venue" />
-        {
-          this.state.min !== Infinity && this.props.concerts[0] && this.state.max !== this.state.min &&
-          <div>
-            <div>
-              ${this.state.searchedCost}
-            </div>
-            ${this.state.min}
-            {!isSmallScreen() &&
-              <input name="searchedCost" type="range" onChange={e => this.debouncedHander(e)} onTouchEnd={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
-            }
-            {isSmallScreen() &&
-              <input name="searchedCost" type="range" onTouchEnd={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
-            }
-            ${this.state.max}
-          </div>}
-        {this.state.max === this.state.min && this.props.concerts[0] &&
-        <div>
-          ${this.state.searchedCost}
+      <input name="searchedCost" type="range" className="cost-input" onChange={e => this.debouncedHander(e)} onTouchEnd={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
+    )
+  }
+
+  render() {
+    console.log(this.state)
+    const { concertData, handleFilters } = this.props;
+    const costInput = this.costRenderHelper();
+    return (
+      <div className="filters-container">
+        <div className="typeahead-container">
+        {/* <img className="search-icon" src="searchIcon.png" alt="searchIcon"/> */}
+          <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="Band/SoundsLike/Venue" />
         </div>
-        }
-      </div>
+        {<div className={this.isCostActive()}>
+          <div className="cost-input-container">
+            <span className="searched-cost">
+              ${this.state.searchedCost}
+            </span>
+            <span className="cost-min">
+              ${this.state.min}
+            </span>
+            <span className="cost-input-span">
+            {costInput}
+            </span>
+              <span className="cost-max">
+                ${this.state.max}
+              </span>
+          </div>
+      </div>}
+    </div>
     );
   }
 }

@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import EventsList from './EventsList';
 import concertData from '../utilities/mockData';
-import {sortByDate} from '../utilities/filterHelpers';
+import { sortByDate } from '../utilities/filterHelpers';
+import {isSmallScreen} from '../utilities/utils';
 import Filters from './Filters';
+import logo from './venueTextOneWord.svg';
+import exploreMusicLogo from './playMusic.svg'
+import venueDecalLogo from './venueLogo.svg';
 
 class App extends Component {
   constructor() {
@@ -22,6 +26,7 @@ class App extends Component {
 
   componentDidMount(){
     document.addEventListener("touchstart", function(){}, true);
+    // document.addEventListener("scroll", this.isScrolling, true);
   }
 
   exploreMusicStart = () => {
@@ -48,20 +53,47 @@ class App extends Component {
     this.setState({concerts: filtered})
   }
 
+  // isScrolling = () => {
+  //   return true;
+  // }
+
   render() {
     return (
-      <div className="wrapper">
-        <button onClick={this.exploreMusicStart}>Play Music</button>
-        {this.state.exploreMusic && <div className="exploreMusicPlayer">
-          <button onClick={this.eMusicIndexIncrement}>Forward</button>
-          <button onClick={this.eMusicIndexDecrement}>Back</button>
-           <EventsList concerts={[this.state.concerts[this.state.exploreMusicIndex]]}  exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler}/>
-        </div>}
-        {!this.state.exploreMusic && <div>
-          <Filters concertData={this.state.concertData} concerts={this.state.concerts} handleFilters={this.handleFilters}/>
-          <EventsList concerts={this.state.concerts}/>
+      <div>
+      <header>
+        <div className="app-logo-container">
+          <img src={logo}  className="app-logo" alt="logo" />
         </div>
-        }
+      {!this.state.exploreMusic &&
+        <span>
+          <Filters concertData={this.state.concertData} concerts={this.state.concerts} handleFilters={this.handleFilters}/>
+        </span>
+    }
+    { !isSmallScreen() &&
+      <span className="explore-music-button-container">
+        <img src={exploreMusicLogo} alt="explore" className="explore-music-button" onClick={this.exploreMusicStart} />
+
+
+
+        {/* <button onClick={this.exploreMusicStart} className="explore-music-button">Play Music</button> */}
+      </span>
+    }
+    </header>
+    <div className="decal-logo-container">
+      <img src={venueDecalLogo} className="decal-logo" alt="logo"/>
+    </div>
+
+        <div className="wrapper">
+
+
+          {this.state.exploreMusic &&
+            <div className="exploreMusicPlayer">
+              <button onClick={this.eMusicIndexIncrement}>Forward</button>
+              <button onClick={this.eMusicIndexDecrement}>Back</button>
+               <EventsList concerts={[this.state.concerts[this.state.exploreMusicIndex]]}  exploreMusic={this.state.exploreMusic} eMusicHandler={this.eMusicHandler}/>
+            </div>}
+            {!this.state.exploreMusic && <EventsList concerts={this.state.concerts}/>}
+        </div>
       </div>
     );
   }

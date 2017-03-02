@@ -59,7 +59,7 @@ class EventsListEntry extends Component {
         <div className="show-info"  onClick={e => this.toggle(e)}>
           <div className="hover-hilight">
             {showCost !== 'No Cover' && <div className="tickets"><a href={ticketLink}>Tickets<span className="cost">{showCost}</span></a></div>}
-            {/* <div className="date">{date}</div> */}
+            <div className="date">{date}</div>
             <div className="headliner">{headliner}</div>
             <span className="other-bands"><TitleList titles={this.props.titles} /></span>
             <div>

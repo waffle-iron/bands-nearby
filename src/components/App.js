@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import EventsList from './EventsList';
-import concertData from '../utilities/mockData';
 import { sortByDate } from '../utilities/filterHelpers';
-import {isSmallScreen} from '../utilities/utils';
+import { isSmallScreen } from '../utilities/utils';
 import Filters from './Filters';
 import logo from './venueTextOneWord.svg';
 import exploreMusicLogo from './playMusic.svg'
 import venueDecalLogo from './venueLogo.svg';
+const concertData = require('../../server/data/productionBetaData');
 
 class App extends Component {
   constructor() {

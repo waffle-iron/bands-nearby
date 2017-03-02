@@ -3,7 +3,6 @@ const getShows = require('../scraper.js');
 const bluebirdPromise = require('bluebird');
 
 const chapelScraper = (window, venue) => {
-  console.log(window)
   const getSummaryLinks = (window) => {
     const summaryLinkElements = window.document.querySelectorAll('a.ds-listing-event-title.url.summary');
     const summaryLinkElementsArray = Array.from(summaryLinkElements);

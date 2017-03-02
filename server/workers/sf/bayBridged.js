@@ -42,7 +42,7 @@ const chapelScraper = (window, venue) => {
         const scrapedCost = window.document.querySelector('.ds-ticket-info').textContent;
         const reCost = /\$(\d+)/g;
         let cost = reCost.exec(scrapedCost);
-        cost === null ? cost = parseInt(scrapedCost) : cost = parseInt(cost[1]);
+        cost === null ? cost = 'No Cover' : cost = parseInt(cost[1]);
 
         const scrapedStartTime = window.document.querySelector('.ds-event-time');
         const reStartTime = /(\d+):(\d+)/g;

@@ -40,7 +40,6 @@ const venues = [
   { name: 'The Fillmore', http: 'http://calendar.thebaybridged.com/venues/the-fillmore' },
   { name: 'Lost Church', http: 'http://calendar.thebaybridged.com/venues/the-lost-church' },
   { name: 'Great American Music Hall', http: 'http://calendar.thebaybridged.com/venues/great-american-music-hall' },
-  { name: 'The Catalyst', http: 'http://calendar.thebaybridged.com/venues/the-catalyst' },
   { name: 'The Independent', http: 'http://calendar.thebaybridged.com/venues/the-independent' },
   { name: 'Thee Parkside', http: 'http://calendar.thebaybridged.com/venues/thee-parkside' },
   { name: 'Bimbo\'s 365', http: 'http://calendar.thebaybridged.com/venues/bimbo-s-365-club' },
@@ -61,6 +60,7 @@ const venues = [
 // { name: 'Monarch', http: 'http://calendar.thebaybridged.com/venues/monarch' },
 
 // bad
+// { name: 'The Catalyst', http: 'http://calendar.thebaybridged.com/venues/the-catalyst' },
 // { name: 'Hemlock Tavern', http: 'http://calendar.thebaybridged.com/venues/hemlock-tavern' },
 
 

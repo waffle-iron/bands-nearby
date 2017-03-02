@@ -27,7 +27,7 @@ export const filterByCost = (concerts, maxPrice) => {
   if (!maxPrice) {
     maxPrice = Infinity;
   }
-  return concerts.filter(concert => concert.cost <= maxPrice);
+  return concerts.filter(concert => concert.cost <= maxPrice || typeof concert.cost === 'string');
 };
 
 // add typeahead filters here:

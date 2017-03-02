@@ -1,3 +1,7 @@
 node_modules
 
 server/workers/APIKeys.js
+
+server/data/archived/*
+
+server/data/bandsNearbyData.json

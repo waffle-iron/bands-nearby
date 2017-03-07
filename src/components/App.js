@@ -69,15 +69,6 @@ class App extends Component {
           <Filters concertData={this.state.concertData} concerts={this.state.concerts} handleFilters={this.handleFilters}/>
         </span>
     }
-    { !isSmallScreen() &&
-      <span className="explore-music-button-container">
-        <img src={exploreMusicLogo} alt="explore" className="explore-music-button" onClick={this.exploreMusicStart} />
-
-
-
-        {/* <button onClick={this.exploreMusicStart} className="explore-music-button">Play Music</button> */}
-      </span>
-    }
     </header>
     <div className="decal-logo-container">
       <img src={venueDecalLogo} className="decal-logo" alt="logo"/>

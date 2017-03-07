@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import SimilarArtistsList from './SimilarArtistsList'
 import TitleList from './TitleList'
 import InfoDropDown from './InfoDropDown';
+import { dayToEnglish } from '../utilities/utils.js';
 
 class EventsListEntry extends Component {
   constructor() {
@@ -54,14 +55,15 @@ class EventsListEntry extends Component {
     const headliner = this.handleSmallScreen(titles[0]);
     const isDisplayed = this.addClass();
     const showCost = this.isCover(cost);
-    console.log(titles, showCost)
+    const day = dayToEnglish(date);
+    // console.log(day)
     return (
       <li className="event-list-entry">
         <div className="show-info"  onClick={e => this.toggle(e)}>
           <div className="hover-hilight">
             {showCost !== 'No Cover' && <div className="tickets"><a href={ticketLink}>Tickets<span className="cost">{showCost}</span></a></div>}
             {showCost === 'No Cover' && <div className="tickets"><span className="cost">{showCost}</span></div>}
-            <div className="date">{date}</div>
+            <div className="date">{day}</div>
             <div className="headliner">{headliner}</div>
             <span className="other-bands"><TitleList titles={this.props.titles} /></span>
             <div>

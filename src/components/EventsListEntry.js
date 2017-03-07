@@ -56,7 +56,7 @@ class EventsListEntry extends Component {
     const isDisplayed = this.addClass();
     const showCost = this.isCover(cost);
     const day = dayToEnglish(date);
-    // console.log(day)
+    console.log(headliner, similarArtists)
     return (
       <li className="event-list-entry">
         <div className="show-info"  onClick={e => this.toggle(e)}>

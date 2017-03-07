@@ -20,9 +20,9 @@ const generateShowData = (venue) => {
   getShows(venue.http)
   .then((data) => sfScraper(data, venue.name))
   .map(concert => getYouTube(concert.title, concert))
-  .then(cleanData)
+  // .then(cleanData)
   .map(concert => getSimilarArtists(concert.title, concert))
-  .then(cleanData)
+  // .then(cleanData)
   // .map(concert => getGoogleSearchResult(concert.title, concert))
   .then(function(data) {
     const allData = JSON.parse(fs.readFileSync('../data/bandsNearbyData.json').toString());

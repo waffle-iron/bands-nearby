@@ -105,7 +105,7 @@ class Filters extends Component {
       <div className="filters-container">
         <div className="typeahead-container">
         {/* <img className="search-icon" src="searchIcon.png" alt="searchIcon"/> */}
-          <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="Band/SoundsLike/Venue" />
+          <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="   Band/SoundsLike/Venue" />
         </div>
         {<div className={this.isCostActive()}>
           <div className="cost-input-container">

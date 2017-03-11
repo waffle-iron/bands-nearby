@@ -1,7 +1,8 @@
 import debounce from 'lodash/debounce';
 import React, { Component } from 'react';
 import { findMinMax, filterByCost, filterByTypeahead } from '../utilities/filterHelpers';
-import { isSmallScreen } from '../utilities/utils'
+import { isSmallScreen, isFree } from '../utilities/utils'
+import logo from './venueTextOneWord.svg';
 
 class Filters extends Component {
   constructor() {
@@ -77,7 +78,6 @@ class Filters extends Component {
   }
 
   isCostActive = () => {
-    console.log(this.state.min, 'min')
     if (this.state.min !== Infinity && this.props.concerts[0] && this.state.max !== this.state.min) {
       return 'searched-cost-active';
     } else if (this.state.min === Infinity) {
@@ -98,22 +98,40 @@ class Filters extends Component {
   }
 
   render() {
-    console.log(this.state)
-    const { concertData, handleFilters } = this.props;
+    const { concertData, handleFilters, concerts } = this.props;
     const costInput = this.costRenderHelper();
+
+    var displayMin = this.state.min
+    if (this.state.min === 0) {
+      displayMin = 'Free'
+    } else {
+      displayMin = `$${this.state.min}`
+    }
+
+    const displaySearchedCost = isFree(this.state.searchedCost)
+
+
+
     return (
       <div className="filters-container">
+        <div className="app-logo-container-mobile">
+          <img src={logo} className="app-logo-mobile" alt="logo" />
+          <div className="app-logo-spacer-mobile"></div>
+        </div>
         <div className="typeahead-container">
-        {/* <img className="search-icon" src="searchIcon.png" alt="searchIcon"/> */}
           <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="   Band/SoundsLike/Venue" />
         </div>
-        {<div className={this.isCostActive()}>
-          <div className="cost-input-container">
-            <span className="searched-cost">
-              ${this.state.searchedCost}
-            </span>
+        <div className="cost-input-container">
+          {concerts.length >= 1 &&
+        <span className={this.isCostActive()}>
+            <div className="price-label-container">
+              <span className="searched-cost">
+                {displaySearchedCost}
+              </span>
+            </div>
+            <span className="cost-input-bar-container">
             <span className="cost-min">
-              ${this.state.min}
+              {displayMin}
             </span>
             <span className="cost-input-span">
             {costInput}
@@ -121,9 +139,32 @@ class Filters extends Component {
               <span className="cost-max">
                 ${this.state.max}
               </span>
-          </div>
-      </div>}
+            </span>
+          </span>}
+        </div>
     </div>
+    //   {/* <div className="filters-container">
+    //     <div className="typeahead-container">
+    //     {/* <img className="search-icon" src="searchIcon.png" alt="searchIcon"/> */}
+    //       <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="   Band/SoundsLike/Venue" />
+    //     </div>
+    //     {<div className={this.isCostActive()}>
+    //       <div className="cost-input-container">
+    //         <span className="searched-cost">
+    //           ${this.state.searchedCost}
+    //         </span>
+    //         <span className="cost-min">
+    //           ${this.state.min}
+    //         </span>
+    //         <span className="cost-input-span">
+    //         {costInput}
+    //         </span>
+    //           <span className="cost-max">
+    //             ${this.state.max}
+    //           </span>
+    //       </div>
+    //   </div>}
+    // </div> */}
     );
   }
 }

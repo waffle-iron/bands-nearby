@@ -2,7 +2,7 @@ import debounce from 'lodash/debounce';
 import React, { Component } from 'react';
 import { findMinMax, filterByCost, filterByTypeahead } from '../utilities/filterHelpers';
 import { isSmallScreen, isFree } from '../utilities/utils'
-import logo from './venueTextOneWord.svg';
+import logo from './bandsNearbyLogo2.svg';
 
 class Filters extends Component {
   constructor() {
@@ -115,14 +115,17 @@ class Filters extends Component {
     return (
       <div className="filters-container">
         <div className="app-logo-container-mobile">
+          {/* <span className="app-logo-mobile">V</span> */}
           <img src={logo} className="app-logo-mobile" alt="logo" />
           <div className="app-logo-spacer-mobile"></div>
         </div>
         <div className="typeahead-container">
           <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="   Band/SoundsLike/Venue" />
         </div>
-        <div className="filter-icon-container-mobile">
-          <div className="filter-icon-mobile"></div>
+        <div className="searched-cost-container-mobile">
+          <div className="searched-cost-frame-mobile">
+            <div className="searched-cost-mobile">{this.state.searchedCost}</div>
+          </div>
         </div>
         <div className="cost-input-container">
           {/* {concerts.length >= 1 &&
@@ -133,14 +136,14 @@ class Filters extends Component {
               </span>
             </div>
             <span className="cost-input-bar-container">
-            <span className="cost-min">
-              {displayMin}
+            <span className="cost-min-container">
+              <span className="cost-min">{displayMin}</span>
             </span>
             <span className="cost-input-span">
             {costInput}
             </span>
-              <span className="cost-max">
-                ${this.state.max}
+              <span className="cost-max-container">
+                <span className="cost-max">${this.state.max}</span>
               </span>
             </span>
           {/* </span>} */}

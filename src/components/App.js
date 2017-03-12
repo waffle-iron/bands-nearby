@@ -4,7 +4,7 @@ import EventsList from './EventsList';
 import { sortByDate } from '../utilities/filterHelpers';
 import { isSmallScreen } from '../utilities/utils';
 import Filters from './Filters';
-import logo from './venueTextOneWord.svg';
+import logo from './bandsNearbyLogo2.svg';
 import venueDecalLogo from './venueLogo.svg';
 
 const concertData = require('../../server/data/productionBetaData');
@@ -58,7 +58,10 @@ class App extends Component {
         <header>
           <div className="header-container">
           <div className="app-logo-container">
-            <img src={logo} className="app-logo" alt="logo" />
+            <object data={logo} className="app-logo"></object>
+
+
+            {/* <img src={logo} className="app-logo" alt="logo" /> */}
             <div className="app-logo-spacer"></div>
           </div>
             <Filters

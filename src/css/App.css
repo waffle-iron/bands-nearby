@@ -12,6 +12,9 @@ html {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+input {
+    border-radius: 0;
+}
 
 body {
   margin: 0;
@@ -39,6 +42,7 @@ li {
   list-style-type: none;
   opacity: 0.9;
 }
+
 
 header {
   background-color: black;
@@ -69,11 +73,12 @@ header {
 
 .app-logo {
   /*border: solid green;*/
-  width: 80%;
-  /*flex: 1 1 70%;*/
-
-  /*padding-left: 22%;*/
-  /*margin-top: -0.5vh;*/
+  /*width: 120%;*/
+  min-height: 100%;
+  /*align-self: flex-start;*/
+  margin-top: -10%;
+  /*max-width: 75%; */
+  max-height: 12vh;
 }
 
 .app-logo-container-mobile {
@@ -143,7 +148,7 @@ header {
 
 .price-label-container {
   flex: 1 1 25;
-  font-size: 1.5vw;
+  font-size: 150%;
   opacity: 0.8;
   /*padding-right: 3%;*/
   padding-bottom: 0.5vh;
@@ -170,22 +175,36 @@ header {
 
 
 
-.cost-min {
+.cost-min-container {
   /*border: solid blue;*/
-  font-size: 1.2vw;
+  font-size: 100%;
   flex: 1 1 10%;
   text-align: left;
   padding-right: 1vw;
   height: 100%;
+  align-self: center;
+  display: flex;
 }
-.cost-max {
+.cost-max-container {
   /*border: solid red;*/
-  font-size: 1.2vw;
+  font-size: 100%;
   flex: 1 1 10%;
   padding-left: 1vw;
   text-align: right;
   height: 100%;
+  display: flex;
 }
+
+.cost-min {
+  flex: 1 1 100;
+  align-self: center;
+}
+
+.cost-max {
+  flex: 1 1 100;
+  align-self: center;
+}
+
 
 .typed-input {
   /*min-width: 100%;*/
@@ -200,14 +219,15 @@ header {
   /*border: solid yellow;*/
   display: flex;
   height: 100%;
-  /*align-items: flex-start;*/
+  align-items: flex-start;
+  /*height: 100%;*/
   /*width: 1vw;*/
   /*transform: rotate(90deg);
   padding-top: 90%;*/
 }
 
 .cost-input {
-  flex: 1 1 100vw;
+  flex: 1 1 100%;
   align-self: flex-start;
 }
 
@@ -345,6 +365,11 @@ header {
   font-size: 106.5%;
 }
 
+.hover-hilight {
+  height: 33vh;
+  border: solid green;
+}
+
 .artist-summary {
   width: 90%;
   margin: auto;
@@ -458,6 +483,14 @@ header {
   margin-right: 1%;
 }
 
+.searched-cost-container-mobile {
+  display: none;
+}
+
+
+
+
+
 input[type=range] {
   -webkit-appearance: none;
   margin: 10px 0;
@@ -563,20 +596,25 @@ input[type=text] {
   opacity: 0.94;
   transition: background-color 1s;
 }
-
-
-
 @media only screen and (max-device-width: 480px) {
 
   header {
-    height: 12vh;
+    height: 11vh;
     background-color: black;
+    width: 100%;
+    padding: 2px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
 
   .header-container {
-    padding: 1%;
-    min-height: 12vh;
+    /*border: solid green;*/
+    height: 11vh;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .app-logo-container {
@@ -586,23 +624,42 @@ input[type=text] {
   .app-logo-container-mobile {
     display: flex;
     align-items: center;
+    /*border: solid white 1px;*/
+    flex: 1 1 15%;
   }
 
   .app-logo-mobile {
-    flex: 1 1 10%;
     /*border: solid blue;*/
-    height: 0.5em;
+    width: 90%;
     /*border: solid purple;*/
   }
 
-  .filter-icon-container-mobile {
-    flex: 1 1 10%;
-    background-color: red;
-    display: inline;
+  .searched-cost-container-mobile {
+    flex: 1 1 5%;
+    /*background-color: red;*/
+    display: flex;
+    order: 10;
+    align-self: flex-start;
   }
 
-  .filter-icon-mobile {
-    width: 10px;
+  .searched-cost-frame-mobile {
+    opacity: 0.5;
+    /*border: solid gray 1px;
+    width: 12px;*/
+    display: flex;
+    justify-content: center;
+    /*margin-left: -2px;*/
+  }
+
+  .searched-cost-mobile {
+    border: solid gray 1px;
+
+    /*flex: 1 1 10%;*/
+    align-self: center;
+
+    font-size: 50%;
+
+    /*width: 2%;*/
   }
 
   /*.app-logo-spacer {
@@ -627,23 +684,26 @@ input[type=text] {
   .filters-container {
     /*float: right;*/
     /*border: solid red;*/
-    display: flex;
+    /*display: flex;*/
     flex-wrap: wrap;
     /*align-content: center;*/
-    /*justify-content: center;*/
-    /*flex: 1 1 85%;
+    justify-content: center;
+    flex: 1 1 85%;
     /*width: 100vw;*/
     /*height: 11vh;*/
     /*flex-direction: column;*/
    }
 
    .typeahead-container {
-     /*border: solid purple;*/
+     /*border: solid gray 1px;
+     border-radius: 5px;
+     padding-left: 4%;*/
      /*width: 100%;
      height: 100%;*/
      /*width: 100vw;*/
-     flex: 1 1 50%;
-     width: 100vw;
+     flex: 1 1 75%;
+     /*width: 100%;*/
+     /*display: flex;*/
      /*width: 100%;*/
      /*order: 2;*/
      /*margin-top: 2vh;*/
@@ -654,49 +714,55 @@ input[type=text] {
 
 
   .cost-input-container {
-    /*order: 1;*/
-    /*opacity: 0.80;*/
     /*border: solid white;*/
-    flex: 1 1 100%;
+    flex: 1 1 80%;
+    width: 100%;
     display: flex;
-    /*width: 100vw;*/
-    /*height: 100%;*/
-    /*flex-direction: column;*/
-    align-items: stretch;
-    /*margin-right: 5%;*/
-    /*display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    width: 100%;*/
+    /*display: none;*/
+    height: 10%;
+    padding-top: 1%;
   }
 
 
 
   .price-label-container {
-    flex: 1 1 30%;
-    font-size: 3.6vw;
-    opacity: 0.8;
-    padding-right: 3%;
-    /*padding-bottom: 0.2vh;*/
-    border: solid green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none;
+    flex: 1 1 25%;
+    opacity: 0.7;
+    border: solid yellow;
+    /*display: flex;*/
+    align-self: center;
+    order: 9;
   }
 
 
-  .price-label {
+  /*.price-label {
     padding-right: 1vw;
     flex: 1 1 100%;
+  }*/
+
+  .searched-cost {
+    /*flex: 1 1 25%;
+    font-size: 70%;*/
+    display: none;
+
+    /*align-self: center;*/
+    /*padding-left: 2%;*/
+
+    /*border: solid green;*/
   }
 
   .cost-input-bar-container {
-    flex: 1 1 80%;
+    flex: 1 1 65%;
     display: flex;
     /*border: solid orange;*/
     width: 100%;
     justify-content: center;
     align-items: center;
+    /*padding-right: 5%;*/
+    padding-left: 23%;
   }
 
 
@@ -717,18 +783,20 @@ input[type=text] {
   }
 
   .typed-input {
-    /*min-width: 100%;*/
-    width: 90%;
-    height: 3vh;
+    min-width: 90%;
+    height: 2vh;
+    /*border: solid white 1px;*/
+    /*flex: 1 1 10%;*/
+    /*width: 60%;*/
   }
 
   .cost-input-span {
     flex: 5 5 60%;
-    align-self: center;
+    /*align-self: center;*/
 
     /*border: solid yellow;*/
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     /*width: 1vw;*/
     /*transform: rotate(90deg);
     padding-top: 90%;*/
@@ -736,7 +804,11 @@ input[type=text] {
 
   .cost-input {
     flex: 1 1 100%;
+    align-self: center;
   }
+
+
+
 
   .main-view-center {
     flex: 1 1 100%;
@@ -749,7 +821,7 @@ input[type=text] {
   }
 
   .decal-logo {
-    /*display: none;*/
+    display: none;
     /*width: 115%;
     height: 115%;
     position: absolute;*/
@@ -758,8 +830,17 @@ input[type=text] {
     /*margin-left: -5%;*/
     /*z-index: 9;*/
     /*padding-top: -50px;*/
-    margin-top: 500px;
+    /*margin-top: 500px;*/
   }
+
+  .show-info {
+    width: 100%;
+  }
+
+  .cost {
+    padding-right: 6%;
+  }
+
 
 
 

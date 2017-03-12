@@ -121,9 +121,12 @@ class Filters extends Component {
         <div className="typeahead-container">
           <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="   Band/SoundsLike/Venue" />
         </div>
+        <div className="filter-icon-container-mobile">
+          <div className="filter-icon-mobile"></div>
+        </div>
         <div className="cost-input-container">
-          {concerts.length >= 1 &&
-        <span className={this.isCostActive()}>
+          {/* {concerts.length >= 1 &&
+        <span className={this.isCostActive()}> */}
             <div className="price-label-container">
               <span className="searched-cost">
                 {displaySearchedCost}
@@ -140,7 +143,7 @@ class Filters extends Component {
                 ${this.state.max}
               </span>
             </span>
-          </span>}
+          {/* </span>} */}
         </div>
     </div>
     //   {/* <div className="filters-container">

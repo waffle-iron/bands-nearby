@@ -61,16 +61,11 @@ class App extends Component {
             <img src={logo} className="app-logo" alt="logo" />
             <div className="app-logo-spacer"></div>
           </div>
-
-
             <Filters
               concertData={this.state.concertData}
               concerts={this.state.concerts}
               handleFilters={this.handleFilters}
             />
-            {/* <div className="filter-icon-container">
-              <img className="filter-icon" src={filter} alt="filter"/>
-            </div> */}
         </div>
         </header>
         <div className="main-view-wrapper">

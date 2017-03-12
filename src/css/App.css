@@ -57,25 +57,32 @@ header {
 
 .app-logo-container {
   /*border: solid yellow;*/
-  text-align: center;
+  /*align-self: center;
+  text-align: center;*/
   /*display: flex;
   flex-direction: column;*/
   flex: 1 1 25%;
+  display: flex;
   /*height: 100%;*/
+  justify-content: flex-end;
 }
 
 .app-logo {
   /*border: solid green;*/
+  width: 80%;
+  /*flex: 1 1 70%;*/
 
-  height: 5em;
-  /*padding-left: 13%;*/
+  /*padding-left: 22%;*/
   /*margin-top: -0.5vh;*/
 }
 
 .app-logo-container-mobile {
   display: none;
-  /*align-items: center;*/
 }
+
+/*.filter-icon-container-mobile {
+  display: none;
+}*/
 
 /*.app-logo-spacer {
   border: solid blue;
@@ -115,6 +122,7 @@ header {
    /*margin-top: 2vh;*/
    align-self: center;
    text-align: center;
+   padding-right: 4%;
  }
 
 
@@ -122,37 +130,41 @@ header {
 .cost-input-container {
   opacity: 0.80;
   /*border: solid blue;*/
-  flex: 1 1 30%;
-  /*margin-right: 5%;*/
+  flex: 1 1 20%;
+  flex-direction: column;
+  margin-right: 5%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /*align-items: flex-start;*/
   width: 100%;
 }
 
 
 
 .price-label-container {
-  flex: 1 1 50%;
-  font-size: 1.7vw;
+  flex: 1 1 25;
+  font-size: 1.5vw;
   opacity: 0.8;
-  padding-right: 3%;
+  /*padding-right: 3%;*/
   padding-bottom: 0.5vh;
+  /*border: solid green;*/
+  display: flex;
+  /*justify-content: flex-end;*/
 }
 
 
 .price-label {
   padding-right: 1vw;
 
-
 }
 
 .cost-input-bar-container {
-  flex: 1 1 50%;
+  flex: 1 1 auto%;
   display: flex;
   /*border: solid orange;*/
   width: 100%;
-  justify-content: center;
+  /*height: 100%;*/
+  /*justify-content: center;*/
   align-items: center;
 }
 
@@ -160,17 +172,19 @@ header {
 
 .cost-min {
   /*border: solid blue;*/
-  font-size: 1.5vw;
-  flex: 1 1 20%;
-  /*text-align: left;*/
+  font-size: 1.2vw;
+  flex: 1 1 10%;
+  text-align: left;
   padding-right: 1vw;
+  height: 100%;
 }
 .cost-max {
   /*border: solid red;*/
-  font-size: 1.5vw;
-  flex: 1 1 20%;
+  font-size: 1.2vw;
+  flex: 1 1 10%;
   padding-left: 1vw;
-  /*text-align: right;*/
+  text-align: right;
+  height: 100%;
 }
 
 .typed-input {
@@ -181,18 +195,25 @@ header {
 
 .cost-input-span {
   flex: 5 5 60%;
-  align-self: center;
+  /*align-self: flex-start;*/
 
   /*border: solid yellow;*/
   display: flex;
-  align-items: center;
+  height: 100%;
+  /*align-items: flex-start;*/
   /*width: 1vw;*/
   /*transform: rotate(90deg);
   padding-top: 90%;*/
 }
 
 .cost-input {
+  flex: 1 1 100vw;
+  align-self: flex-start;
+}
+
+.searched-cost {
   flex: 1 1 100%;
+  align-self: flex-end;
 }
 
 .searched-cost-inactive {
@@ -554,6 +575,7 @@ input[type=text] {
 
 
   .header-container {
+    padding: 1%;
     min-height: 12vh;
   }
 
@@ -571,6 +593,16 @@ input[type=text] {
     /*border: solid blue;*/
     height: 0.5em;
     /*border: solid purple;*/
+  }
+
+  .filter-icon-container-mobile {
+    flex: 1 1 10%;
+    background-color: red;
+    display: inline;
+  }
+
+  .filter-icon-mobile {
+    width: 10px;
   }
 
   /*.app-logo-spacer {
@@ -645,8 +677,8 @@ input[type=text] {
     font-size: 3.6vw;
     opacity: 0.8;
     padding-right: 3%;
-    padding-bottom: 0.5vh;
-    /*border: solid green;*/
+    /*padding-bottom: 0.2vh;*/
+    border: solid green;
     display: flex;
     align-items: center;
     justify-content: center;

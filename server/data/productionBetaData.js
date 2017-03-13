@@ -6,16 +6,13 @@ const data = require('./bandsNearbyData.json');
 
 
 const today = new Date();
-const dayNow = today.getDate();
+const dayNow = today.getDate()
 const monthNow = today.getMonth() + 1;
 
 const relevantData = function(data) {
   return data.filter(function(item) {
     const dateArray = item.date.split('-');
-    if (dateArray[1] == monthNow && dateArray[2] > dayNow && dateArray[2] <= (dayNow + 7) && item.youTube !== [] && item.similarArtists !== []) {
-      if (item.cost === 0) {
-        item.cost = 'No Cover';
-      }
+    if (dateArray[1] == monthNow && dateArray[2] >= dayNow && dateArray[2] <= (dayNow + 7) && item.youTube !== [] && item.similarArtists !== []) {
       return true;
     }
   });

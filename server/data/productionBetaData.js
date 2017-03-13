@@ -12,7 +12,7 @@ const monthNow = today.getMonth() + 1;
 const relevantData = function(data) {
   return data.filter(function(item) {
     const dateArray = item.date.split('-');
-    if (dateArray[1] == monthNow && dateArray[2] >= dayNow && dateArray[2] <= (dayNow + 7) && item.youTube !== [] && item.similarArtists !== []) {
+    if (dateArray[1] == monthNow && dateArray[2] >= dayNow && dateArray[2] <= (dayNow + 6) && item.youTube !== [] && item.similarArtists !== []) {
       return true;
     }
   });

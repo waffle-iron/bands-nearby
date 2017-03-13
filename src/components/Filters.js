@@ -2,7 +2,7 @@ import debounce from 'lodash/debounce';
 import React, { Component } from 'react';
 import { findMinMax, filterByCost, filterByTypeahead } from '../utilities/filterHelpers';
 import { isSmallScreen, isFree } from '../utilities/utils'
-import logo from './bandsNearbyLogo2.svg';
+import logo from './bandsNearbyLogo.svg';
 
 class Filters extends Component {
   constructor() {
@@ -77,31 +77,31 @@ class Filters extends Component {
     this.debouncedHandleInput(e);
   }
 
-  isCostActive = () => {
+  isCostActive = (classname) => {
     if (this.state.min !== Infinity && this.props.concerts[0] && this.state.max !== this.state.min) {
-      return 'searched-cost-active';
+      return `${classname}`;
     } else if (this.state.min === Infinity) {
-      return 'searched-cost-hide';
+      return `${classname} total-opaque`;
     }
-    return 'searched-cost-inactive';
+    return `${classname} partial-opaque`;
   }
 
   costRenderHelper = () => {
     if (isSmallScreen()) {
       return (
-        <input name="searchedCost" type="range" className="cost-input" onTouchEnd={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
+        <input name="searchedCost" type="range" className="cost-input" onTouchEnd={e => this.debouncedHander(e)} onTouchStart={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
       );
     }
     return (
-      <input name="searchedCost" type="range" className="cost-input" onChange={e => this.debouncedHander(e)} onTouchEnd={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
-    )
+      <input name="searchedCost" type="range" className="cost-input" onChange={e => this.debouncedHander(e)} onMouseUp={e => this.debouncedHander(e)} min={this.state.min} max={this.state.max} ref={(input) => { this.rangeInput = input; }} />
+    );
   }
 
   render() {
     const { concertData, handleFilters, concerts } = this.props;
     const costInput = this.costRenderHelper();
 
-    var displayMin = this.state.min
+    let displayMin = this.state.min
     if (this.state.min === 0) {
       displayMin = 'Free'
     } else {
@@ -112,10 +112,17 @@ class Filters extends Component {
 
 
 
+
+
+
+
+
+
+
+
     return (
       <div className="filters-container">
         <div className="app-logo-container-mobile">
-          {/* <span className="app-logo-mobile">V</span> */}
           <img src={logo} className="app-logo-mobile" alt="logo" />
           <div className="app-logo-spacer-mobile"></div>
         </div>
@@ -124,12 +131,10 @@ class Filters extends Component {
         </div>
         <div className="searched-cost-container-mobile">
           <div className="searched-cost-frame-mobile">
-            <div className="searched-cost-mobile">{this.state.searchedCost}</div>
+            <div className={this.isCostActive("searched-cost-mobile")}>{this.state.searchedCost}</div>
           </div>
         </div>
-        <div className="cost-input-container">
-          {/* {concerts.length >= 1 &&
-        <span className={this.isCostActive()}> */}
+        <div className={this.isCostActive("cost-input-container")}>
             <div className="price-label-container">
               <span className="searched-cost">
                 {displaySearchedCost}
@@ -137,40 +142,17 @@ class Filters extends Component {
             </div>
             <span className="cost-input-bar-container">
             <span className="cost-min-container">
-              <span className="cost-min">{displayMin}</span>
+              {this.state.min !== Infinity && <span className="cost-min">{displayMin}</span>}
             </span>
             <span className="cost-input-span">
             {costInput}
             </span>
               <span className="cost-max-container">
-                <span className="cost-max">${this.state.max}</span>
+                {this.state.max !== -Infinity && <span className="cost-max">${this.state.max}</span>}
               </span>
             </span>
-          {/* </span>} */}
         </div>
     </div>
-    //   {/* <div className="filters-container">
-    //     <div className="typeahead-container">
-    //     {/* <img className="search-icon" src="searchIcon.png" alt="searchIcon"/> */}
-    //       <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="   Band/SoundsLike/Venue" />
-    //     </div>
-    //     {<div className={this.isCostActive()}>
-    //       <div className="cost-input-container">
-    //         <span className="searched-cost">
-    //           ${this.state.searchedCost}
-    //         </span>
-    //         <span className="cost-min">
-    //           ${this.state.min}
-    //         </span>
-    //         <span className="cost-input-span">
-    //         {costInput}
-    //         </span>
-    //           <span className="cost-max">
-    //             ${this.state.max}
-    //           </span>
-    //       </div>
-    //   </div>}
-    // </div> */}
     );
   }
 }

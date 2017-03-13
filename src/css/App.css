@@ -12,17 +12,12 @@ html {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-input {
-    border-radius: 0;
-}
-
 body {
   margin: 0;
   padding: 0;
   color: white;
   font-family: 'Quicksand', sans-serif;
 }
-
 
 a {
   text-decoration: none;
@@ -52,6 +47,117 @@ header {
   z-index: 99;
 }
 
+input {
+  border-radius: 0;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 80%;
+  padding-left: 1%;
+  padding-right: 1%;
+  opacity: 0.5;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type=range]:active {
+  opacity: 0.6;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #2497E3;
+  border-radius: 1px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #2497E3;
+  height: 20px;
+  width: 20px;
+  border-radius: 25px;
+  background: #A1D0FF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #2497E3;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #2497E3;
+  border-radius: 1px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #2497E3;
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: #A1D0FF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2497E3;
+  border: 0px solid #000000;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #2497E3;
+  border: 0px solid #000000;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 1px solid #2497E3;
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: #A1D0FF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #2497E3;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #2497E3;
+}
+
+input[type=text]:focus {
+  opacity: 1;
+  transition: background-color 1s;
+}
+
+input[type=text] {
+  opacity: 0.94;
+  transition: background-color 1s;
+}
+
+
 .header-container {
   /*border: solid pink;*/
   width: 100vw;
@@ -60,77 +166,42 @@ header {
 }
 
 .app-logo-container {
-  /*border: solid yellow;*/
-  /*align-self: center;
-  text-align: center;*/
-  /*display: flex;
-  flex-direction: column;*/
   flex: 1 1 25%;
   display: flex;
-  /*height: 100%;*/
-  justify-content: flex-end;
+  justify-content: center;
+  align-self: center;
+  /*font-family: 'Codystar', cursive;
+  font-stretch: ultra-condensed;
+  font-size: 200%;*/
 }
 
 .app-logo {
   /*border: solid green;*/
-  /*width: 120%;*/
-  min-height: 100%;
-  /*align-self: flex-start;*/
-  margin-top: -10%;
-  /*max-width: 75%; */
-  max-height: 12vh;
+  min-height: 180%;
+  margin-top: -16%;
+  max-height: 11vh;
+  padding-left: 5%;
 }
 
 .app-logo-container-mobile {
   display: none;
 }
 
-/*.filter-icon-container-mobile {
-  display: none;
-}*/
-
-/*.app-logo-spacer {
-  border: solid blue;
-  height: 100%;
-  width: 100%;
-  flex: 1 1 50%;
-}*/
-
-/*.filter-icon-container {
-  flex: 1 1 10%;
-  border: solid purple;
-}
-
-.filter-icon {
-  flex: 1 1 5%;
-  border: solid green;
-  width: 0.3vh;
-  height: 2vh;
-}*/
-
 .filters-container {
   /*border: solid red;*/
   flex: 1 1 85%;
   display: flex;
-  /*justify-content: center;*/
   width: 100vw;
   height: 11vh;
-  /*flex-direction: column;*/
  }
 
  .typeahead-container {
    /*border: solid purple;*/
-   /*width: 100%;
-   height: 100%;*/
-   /*width: 100vw;*/
    flex: 1 1 70%;
-   /*margin-top: 2vh;*/
    align-self: center;
    text-align: center;
    padding-right: 4%;
  }
-
-
 
 .cost-input-container {
   opacity: 0.80;
@@ -140,43 +211,30 @@ header {
   margin-right: 5%;
   display: flex;
   justify-content: center;
-  /*align-items: flex-start;*/
   width: 100%;
 }
-
-
 
 .price-label-container {
   flex: 1 1 25;
   font-size: 150%;
   opacity: 0.8;
-  /*padding-right: 3%;*/
   padding-bottom: 0.5vh;
   /*border: solid green;*/
   display: flex;
-  /*justify-content: flex-end;*/
 }
-
 
 .price-label {
   padding-right: 1vw;
-
 }
 
 .cost-input-bar-container {
   flex: 1 1 auto%;
   display: flex;
-  /*border: solid orange;*/
   width: 100%;
-  /*height: 100%;*/
-  /*justify-content: center;*/
   align-items: center;
 }
 
-
-
 .cost-min-container {
-  /*border: solid blue;*/
   font-size: 100%;
   flex: 1 1 10%;
   text-align: left;
@@ -185,8 +243,8 @@ header {
   align-self: center;
   display: flex;
 }
+
 .cost-max-container {
-  /*border: solid red;*/
   font-size: 100%;
   flex: 1 1 10%;
   padding-left: 1vw;
@@ -205,25 +263,16 @@ header {
   align-self: center;
 }
 
-
 .typed-input {
-  /*min-width: 100%;*/
   width: 90%;
   height: 2.8vh;
 }
 
 .cost-input-span {
   flex: 5 5 60%;
-  /*align-self: flex-start;*/
-
-  /*border: solid yellow;*/
   display: flex;
   height: 100%;
   align-items: flex-start;
-  /*height: 100%;*/
-  /*width: 1vw;*/
-  /*transform: rotate(90deg);
-  padding-top: 90%;*/
 }
 
 .cost-input {
@@ -236,18 +285,8 @@ header {
   align-self: flex-end;
 }
 
-.searched-cost-inactive {
-  opacity: 0.2;
-  transition: all 0.5s;
-}
-
-.searched-cost-active {
-  opacity: 0.9;
-  transition: all 0.5s;
-}
 
 .main-view-wrapper {
-  /*border: solid purple;*/
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -255,47 +294,36 @@ header {
 }
 
 .main-view-left {
-  /*border: solid orange;*/
   flex: 1 1 25%;
   min-width: 0;
 }
 
 .main-view-center {
-  /*border: solid green;*/
-  margin-top: 7vh;
+  margin-top: 11vh;
   flex: 1 1 50%;
   min-width: 0;
 }
 
 .main-view-right {
-  /*border: solid blue;*/
   flex: 1 1 25%;
   display: flex;
-  /*flex-direction: column;*/
   justify-content: center;
   height: 100vh;
   width: 100%;
   min-width: 0;
 }
 
-
-
 .decal-logo {
   /*border: solid purple;*/
-  width: 35%;
-  height: 35%;
+  width: 30%;
+  height: 30%;
+  /*padding-left: 1%;*/
   position: fixed;
   bottom: 2%;
-  right: -5%;
+  right: -4%;
   /*margin-left: -5%;*/
   z-index: -9;
 }
-
-
-
-
-
-
 
 .event-list-entry {
   width: 100%;
@@ -303,11 +331,9 @@ header {
   overflow: hidden;
 }
 
-
-
 .show {
   display: inline;
-      transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .hide {
@@ -316,22 +342,24 @@ header {
 }
 
 .show-info {
+  font-size: 100%;
   height: 30vh;
   position: absolute;
   z-index: 1;
-  margin-top: 7vh;
-  margin-left: 3vw;
+  margin-top: 2vh;
+  padding: 3vw;
   width: 44%;
   overflow: hidden;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 .concert-photo-wrapper {
   position: relative;
   z-index: -1;
   margin: 0;
   padding: 0;
-  height: 33vh;
+  height: 30vh;
   overflow: hidden;
 }
 
@@ -339,36 +367,12 @@ header {
   z-index: -1;
   height: auto;
   width: 100%;
-  height: 100%;
+  height: 110%;
   opacity: 0.3;
   filter: blur(3px);
   overflow: hidden;
 }
 
-.event-list-entry:active .concert-photo {
-  filter: blur(1px);
-  opacity: 0.4;
-}
-
-.event-list-entry:hover .concert-photo {
-  filter: blur(1px);
-  opacity: 0.4;
-}
-
-.event-list-entry .hover-hilight:active  {
-  color: #220a37;
-  font-size: 105.5%;
-}
-
-.event-list-entry .hover-hilight:hover  {
-  color: #220a37;
-  font-size: 106.5%;
-}
-
-.hover-hilight {
-  height: 33vh;
-  border: solid green;
-}
 
 .artist-summary {
   width: 90%;
@@ -487,116 +491,58 @@ header {
   display: none;
 }
 
+.decal-logo-container-mobile {
+  display: none;
+}
 
+.total-opaque {
+  opacity: 0.1;
+  transition: all 0.5s;
+}
 
-
-
-input[type=range] {
-  -webkit-appearance: none;
-  margin: 10px 0;
-  width: 80%;
-  padding-left: 1%;
-  padding-right: 1%;
+.partial-opaque {
   opacity: 0.5;
+  transition: all 0.5s;
 }
 
-input:focus {
-  outline: none;
+
+
+
+
+
+@media only screen and (min-width:481px) {
+  .event-list-entry:hover .concert-photo {
+    filter: blur(1px);
+    opacity: 0.4;
+  }
+
+
+  .event-list-entry:hover  {
+    color: #220a37;
+    font-size: 100.5%;
+    opacity: 0.8;
+  }
 }
 
-input[type=range]:active {
-  opacity: 0.6;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 0px 0px 0px #000000;
-  background: #2497E3;
-  border-radius: 1px;
-  border: 0px solid #000000;
-}
-input[type=range]::-webkit-slider-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #2497E3;
-  height: 18px;
-  width: 18px;
-  border-radius: 25px;
-  background: #A1D0FF;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -7px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #2497E3;
-}
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 0px 0px 0px #000000;
-  background: #2497E3;
-  border-radius: 1px;
-  border: 0px solid #000000;
-}
-input[type=range]::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #2497E3;
-  height: 18px;
-  width: 18px;
-  border-radius: 25px;
-  background: #A1D0FF;
-  cursor: pointer;
-}
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  background: #2497E3;
-  border: 0px solid #000000;
-  border-radius: 2px;
-  box-shadow: 0px 0px 0px #000000;
-}
-input[type=range]::-ms-fill-upper {
-  background: #2497E3;
-  border: 0px solid #000000;
-  border-radius: 2px;
-  box-shadow: 0px 0px 0px #000000;
-}
-input[type=range]::-ms-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #2497E3;
-  height: 18px;
-  width: 18px;
-  border-radius: 25px;
-  background: #A1D0FF;
-  cursor: pointer;
-}
-input[type=range]:focus::-ms-fill-lower {
-  background: #2497E3;
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: #2497E3;
+@media only screen and (min-width:1500px) {
+  .show-info {
+    font-size: 150%;
+  }
 }
 
-input[type=text]:focus {
-  opacity: 1;
-  transition: background-color 1s;
-}
 
-input[type=text] {
-  opacity: 0.94;
-  transition: background-color 1s;
-}
+
+
 @media only screen and (max-device-width: 480px) {
+  .event-list-entry:active .concert-photo {
+    filter: blur(1px);
+    opacity: 0.4;
+  }
+
+  .event-list-entry:active  {
+    color: #220a37;
+    opacity: 0.7;
+  }
 
   header {
     height: 11vh;
@@ -630,24 +576,28 @@ input[type=text] {
 
   .app-logo-mobile {
     /*border: solid blue;*/
-    width: 90%;
+    width: 100%;
+  
     /*border: solid purple;*/
   }
 
   .searched-cost-container-mobile {
-    flex: 1 1 5%;
+    flex: 1 1 1%;
     /*background-color: red;*/
     display: flex;
     order: 10;
     align-self: flex-start;
+    margin-right: 6%;
+    justify-content: center;
   }
 
   .searched-cost-frame-mobile {
     opacity: 0.5;
-    /*border: solid gray 1px;
-    width: 12px;*/
+    border: solid #003366 1px;
+    /*width: 12px;*/
     display: flex;
     justify-content: center;
+    width: 5px;
     /*margin-left: -2px;*/
   }
 
@@ -661,25 +611,6 @@ input[type=text] {
 
     /*width: 2%;*/
   }
-
-  /*.app-logo-spacer {
-    border: solid blue;
-    height: 100%;
-    width: 100%;
-    flex: 1 1 50%;
-  }*/
-
-  /*.filter-icon-container {
-    flex: 1 1 10%;
-    border: solid purple;
-  }
-
-  .filter-icon {
-    flex: 1 1 5%;
-    border: solid green;
-    width: 0.3vh;
-    height: 2vh;
-  }*/
 
   .filters-container {
     /*float: right;*/
@@ -715,6 +646,7 @@ input[type=text] {
 
   .cost-input-container {
     /*border: solid white;*/
+    padding-left: 2%;
     flex: 1 1 80%;
     width: 100%;
     display: flex;
@@ -729,12 +661,6 @@ input[type=text] {
 
   .price-label-container {
     display: none;
-    flex: 1 1 25%;
-    opacity: 0.7;
-    border: solid yellow;
-    /*display: flex;*/
-    align-self: center;
-    order: 9;
   }
 
 
@@ -750,8 +676,6 @@ input[type=text] {
 
     /*align-self: center;*/
     /*padding-left: 2%;*/
-
-    /*border: solid green;*/
   }
 
   .cost-input-bar-container {
@@ -812,6 +736,9 @@ input[type=text] {
 
   .main-view-center {
     flex: 1 1 100%;
+    margin-top: 11vh;
+    display: flex;
+    flex-direction: column;
   }
   .main-view-left {
     flex: 0 0 0%;
@@ -822,19 +749,34 @@ input[type=text] {
 
   .decal-logo {
     display: none;
-    /*width: 115%;
-    height: 115%;
-    position: absolute;*/
-    /*top: 2%;
-    right: -5%;*/
-    /*margin-left: -5%;*/
-    /*z-index: 9;*/
-    /*padding-top: -50px;*/
-    /*margin-top: 500px;*/
   }
+
+  .decal-logo-container-mobile {
+    display: block;
+    flex: 1 1 100%;
+    align-items: flex-end;
+    text-align: center;
+    background-color: black;
+    opacity: 0.9;
+  }
+
+  .decal-logo-mobile {
+    width: 50%;
+    filter: invert(100%);
+    opacity: 0.8;
+    /*border: solid green;*/
+  }
+
 
   .show-info {
     width: 100%;
+    font-size: 100%;
+    padding: 3vw;
+    height: 33vh;
+  }
+
+  .concert-photo-wrapper {
+    height: 33vh;
   }
 
   .cost {
@@ -844,4 +786,13 @@ input[type=text] {
 
 
 
+}
+
+::-webkit-scrollbar {
+    display: none !important;
+}
+
+iframe
+{
+    overflow: hidden;
 }

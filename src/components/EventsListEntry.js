@@ -29,7 +29,7 @@ class EventsListEntry extends Component {
     return this.state.toggled ? 'show ' : 'hide';
   }
   isCover(cost) {
-    return typeof cost === 'number' && cost === cost ? cost = `$${cost}` : cost = 'No Cover';
+    return cost !== 0 && cost === cost ? cost = `$${cost}` : cost = 'No Cover';
   }
 
   isVisible = (el) => {
@@ -56,9 +56,9 @@ class EventsListEntry extends Component {
     const isDisplayed = this.addClass();
     const showCost = this.isCover(cost);
     const day = dayToEnglish(date);
-    console.log(headliner, similarArtists)
     return (
       <li className="event-list-entry">
+        <div className="show-info-container">
         <div className="show-info"  onClick={e => this.toggle(e)}>
           <div className="hover-hilight">
             {showCost !== 'No Cover' && <div className="tickets"><a href={ticketLink}>Tickets<span className="cost">{showCost}</span></a></div>}
@@ -75,6 +75,7 @@ class EventsListEntry extends Component {
             {similarArtists[0] && <SimilarArtistsList artists={similarArtists} />}
           </div>
         </div>
+      </div>
         <div className="concert-photo-wrapper" >
           <img className="concert-photo" src={photo} alt={photo} />
         </div>

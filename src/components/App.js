@@ -4,7 +4,7 @@ import EventsList from './EventsList';
 import { sortByDate } from '../utilities/filterHelpers';
 import { isSmallScreen } from '../utilities/utils';
 import Filters from './Filters';
-import logo from './bandsNearbyLogo2.svg';
+import logo from './bandsNearbyLogo.svg';
 import venueDecalLogo from './venueLogo.svg';
 
 const concertData = require('../../server/data/productionBetaData');
@@ -58,10 +58,8 @@ class App extends Component {
         <header>
           <div className="header-container">
           <div className="app-logo-container">
-            <object data={logo} className="app-logo"></object>
-
-
-            {/* <img src={logo} className="app-logo" alt="logo" /> */}
+            {/* <p>Bands Nearby</p> */}
+            <img src={logo} className="app-logo" alt="logo" />
             <div className="app-logo-spacer"></div>
           </div>
             <Filters
@@ -77,17 +75,11 @@ class App extends Component {
             <EventsList
               concerts={this.state.concerts}
             />
+            <div className="decal-logo-container-mobile">
+              <img src={venueDecalLogo} className="decal-logo-mobile" alt="logo" />
+            </div>
           </div>
           <div className="main-view-right">
-        {/* {!isSmallScreen() &&
-        <div className="main-filter-container">
-          <Filters
-            concertData={this.state.concertData}
-            concerts={this.state.concerts}
-            handleFilters={this.handleFilters}
-          />
-        </div>
-        } */}
         <div className="decal-logo-container">
           <img src={venueDecalLogo} className="decal-logo" alt="logo" />
         </div>

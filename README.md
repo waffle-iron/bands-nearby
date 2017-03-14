@@ -5,5 +5,5 @@ Uses vanilla JS and JSDOM to scrape concert listings from local venues too small
 http://beta.bandsnearby.com/
 
 
-Venue:
+Bands Nearby:
 ![alt text](https://github.com/jenjwong/bands-nearby/blob/beta/src/css/images/venuePic.png "Bands Nearby")

@@ -57,7 +57,7 @@ input[type=range] {
   width: 80%;
   padding-left: 1%;
   padding-right: 1%;
-  opacity: 0.5;
+  /*opacity: 0.5;*/
 }
 
 input:focus {
@@ -147,6 +147,9 @@ input[type=range]:focus::-ms-fill-upper {
   background: #2497E3;
 }
 
+
+
+
 input[type=text]:focus {
   opacity: 1;
   transition: background-color 1s;
@@ -155,7 +158,17 @@ input[type=text]:focus {
 input[type=text] {
   opacity: 0.94;
   transition: background-color 1s;
+  font-size: 0.5vw;
+  padding-left: 1vw;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /*font-family: 'Amatic SC', cursive;*/
 }
+
+::-webkit-input-placeholder { text-transform:uppercase; font-style:italic; letter-spacing:0.3vw; color:#d6d7d8;}
+::-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spacing:0.3vw; color:#fcfcfc; } /* firefox 19+ */
+:-ms-input-placeholder { text-transform:uppercase; font-style:italic; letter-spacing:0.3vw; color:#fcfcfc; } /* ie */
+input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spacing:0.3vw; color:#fcfcfc; }
 
 
 .header-container {
@@ -170,17 +183,14 @@ input[type=text] {
   display: flex;
   justify-content: center;
   align-self: center;
-  /*font-family: 'Codystar', cursive;
-  font-stretch: ultra-condensed;
-  font-size: 200%;*/
+  text-align: center;
 }
 
 .app-logo {
-  /*border: solid green;*/
-  min-height: 180%;
-  margin-top: -16%;
-  max-height: 11vh;
+  width: 100%;
   padding-left: 5%;
+  font-family: 'Londrina Sketch', cursive;
+  font-size: 3.3vw;
 }
 
 .app-logo-container-mobile {
@@ -204,6 +214,7 @@ input[type=text] {
  }
 
 .cost-input-container {
+  font-family: 'Amatic SC', cursive;
   opacity: 0.80;
   /*border: solid blue;*/
   flex: 1 1 20%;
@@ -216,11 +227,9 @@ input[type=text] {
 
 .price-label-container {
   flex: 1 1 25;
-  font-size: 150%;
-  opacity: 0.8;
+  font-size: 200%;
   padding-bottom: 0.5vh;
-  /*border: solid green;*/
-  display: flex;
+    display: flex;
 }
 
 .price-label {
@@ -235,7 +244,7 @@ input[type=text] {
 }
 
 .cost-min-container {
-  font-size: 100%;
+  font-size: 150%;
   flex: 1 1 10%;
   text-align: left;
   padding-right: 1vw;
@@ -245,12 +254,13 @@ input[type=text] {
 }
 
 .cost-max-container {
-  font-size: 100%;
+  font-size: 150%;
   flex: 1 1 10%;
   padding-left: 1vw;
   text-align: right;
   height: 100%;
   display: flex;
+  align-self: center;
 }
 
 .cost-min {
@@ -510,7 +520,7 @@ input[type=text] {
 
 
 
-@media only screen and (min-width:481px) {
+@media only screen and (min-width:800px) {
   .event-list-entry:hover .concert-photo {
     filter: blur(1px);
     opacity: 0.4;
@@ -533,7 +543,7 @@ input[type=text] {
 
 
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 800px) {
   .event-list-entry:active .concert-photo {
     filter: blur(1px);
     opacity: 0.4;
@@ -564,21 +574,15 @@ input[type=text] {
   }
 
   .app-logo-container {
-    display: none;
-  }
-
-  .app-logo-container-mobile {
-    display: flex;
-    align-items: center;
     /*border: solid white 1px;*/
-    flex: 1 1 15%;
+    align-self: flex-start;
+    flex: 1 1 22%;
   }
 
-  .app-logo-mobile {
-    /*border: solid blue;*/
-    width: 100%;
-  
-    /*border: solid purple;*/
+  .app-logo {
+    font-size: 12vw;
+    padding-top: 1%;
+
   }
 
   .searched-cost-container-mobile {
@@ -587,7 +591,7 @@ input[type=text] {
     display: flex;
     order: 10;
     align-self: flex-start;
-    margin-right: 6%;
+    margin-right: 9%;
     justify-content: center;
   }
 
@@ -685,30 +689,28 @@ input[type=text] {
     width: 100%;
     justify-content: center;
     align-items: center;
-    /*padding-right: 5%;*/
-    padding-left: 23%;
   }
 
 
 
   .cost-min {
     /*border: solid blue;*/
-    font-size: 3vw;
+    font-size: 4vw;
     flex: 1 1 20%;
     text-align: center;
     padding-right: 1vw;
   }
   .cost-max {
     /*border: solid red;*/
-    font-size: 3vw;
+    font-size: 4vw;
     flex: 1 1 20%;
     padding-left: 1vw;
     text-align: center;
   }
 
   .typed-input {
-    min-width: 90%;
-    height: 2vh;
+    min-width: 92%;
+    height: 3vh;
     /*border: solid white 1px;*/
     /*flex: 1 1 10%;*/
     /*width: 60%;*/
@@ -783,16 +785,12 @@ input[type=text] {
     padding-right: 6%;
   }
 
+  ::-webkit-input-placeholder { text-transform:lowercase; font-style:italic; letter-spacing:0.2vw; color:#e5e5e5;}
+  ::-moz-placeholder { text-transform:lowercase; font-style:italic; letter-spacing:0.2vw; color:#e5e5e5; } /* firefox 19+ */
+  :-ms-input-placeholder { text-transform:lowercase; font-style:italic; letter-spacing:0.2vw; color:#e5e5e5; } /* ie */
+  input:-moz-placeholder { text-transform:lowercase; font-style:italic; letter-spacing:0.2vw; color:#e5e5e5; }
 
 
 
-}
 
-::-webkit-scrollbar {
-    display: none !important;
-}
-
-iframe
-{
-    overflow: hidden;
 }

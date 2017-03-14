@@ -58,8 +58,8 @@ class App extends Component {
         <header>
           <div className="header-container">
           <div className="app-logo-container">
-            {/* <p>Bands Nearby</p> */}
-            <img src={logo} className="app-logo" alt="logo" />
+            {!isSmallScreen() && <div className="app-logo">BANDS NEARBY</div>}
+            {isSmallScreen() && <div className="app-logo">BN</div>}
             <div className="app-logo-spacer"></div>
           </div>
             <Filters

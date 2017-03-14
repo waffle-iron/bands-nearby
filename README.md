@@ -2,6 +2,8 @@
 
 Uses vanilla JS and JSDOM to scrape concert listings from local venues too small or underground to be included in mainstream listings. Uses YouTube API and LastFM API to provide more information about artists (sounds similar to and you tube streaming). Built with es6, Express, flexbox, React and Node.
 
+http://beta.bandsnearby.com/
+
 
 Venue:
-![alt text](https://github.com/jenjwong/bands-nearby/blob/beta/src/css/images/venuePic.png "Venue Music App")
+![alt text](https://github.com/jenjwong/bands-nearby/blob/beta/src/css/images/venuePic.png "Bands Nearby")

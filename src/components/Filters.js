@@ -2,7 +2,6 @@ import debounce from 'lodash/debounce';
 import React, { Component } from 'react';
 import { findMinMax, filterByCost, filterByTypeahead } from '../utilities/filterHelpers';
 import { isSmallScreen, isFree } from '../utilities/utils'
-import logo from './bandsNearbyLogo.svg';
 
 class Filters extends Component {
   constructor() {
@@ -122,10 +121,10 @@ class Filters extends Component {
 
     return (
       <div className="filters-container">
-        <div className="app-logo-container-mobile">
+        {/* <div className="app-logo-container-mobile">
           <img src={logo} className="app-logo-mobile" alt="logo" />
           <div className="app-logo-spacer-mobile"></div>
-        </div>
+        </div> */}
         <div className="typeahead-container">
           <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="   Band/SoundsLike/Venue" />
         </div>

@@ -4,7 +4,7 @@ import EventsList from './EventsList';
 import { sortByDate } from '../utilities/filterHelpers';
 import { isSmallScreen } from '../utilities/utils';
 import Filters from './Filters';
-import logo from './bandsNearbyLogo.svg';
+// import logo from './bandsNearbyLogo.svg';
 import venueDecalLogo from './venueLogo.svg';
 
 const concertData = require('../../server/data/productionBetaData');

@@ -42,11 +42,13 @@ class EventsListEntry extends Component {
      }
   }
 
+// bands title must be less than six words
   handleSmallScreen = (headliner) => {
     if (!window.matchMedia("(min-width: 667px)").matches) {
       return headliner.split(' ').slice(0, 3).join(' ');
     }
-    return headliner;
+    return headliner.split(' ').slice(0, 5).join(' ');
+
   }
 
 

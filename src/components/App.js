@@ -4,7 +4,6 @@ import EventsList from './EventsList';
 import { sortByDate } from '../utilities/filterHelpers';
 import Filters from './Filters';
 import venueDecalLogo from './bandsNearbyLogo.svg';
-import favicon from '../../public/favicon.ico';
 
 const concertData = require('../../server/data/productionBetaData');
 
@@ -14,8 +13,6 @@ class App extends Component {
     this.state = {
       concertData,
       concerts: {},
-      exploreMusicIndex: 0,
-      exploreMusic: false,
     };
   }
 
@@ -39,7 +36,6 @@ class App extends Component {
             <div className="app-logo-container">
               <div className="app-logo">BANDS NEARBY</div>
               <div className="app-logo-mobile">BN</div>
-            {/* <div className="app-logo-spacer"></div> */}
             </div>
             <Filters
               concertData={this.state.concertData}

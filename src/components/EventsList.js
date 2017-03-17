@@ -12,8 +12,6 @@ class EventsList extends Component {
             <EventsListEntry
               key={index}
               id={index}
-              exploreMusic={exploreMusic}
-              eMusicHandler={eMusicHandler}
               titles={concerts[concert].title}
               ticketLink={concerts[concert].link}
               date={concerts[concert].date}

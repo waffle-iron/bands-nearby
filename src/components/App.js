@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import EventsList from './EventsList';
 import { sortByDate } from '../utilities/filterHelpers';
-import { isSmallScreen } from '../utilities/utils';
 import Filters from './Filters';
-// import logo from './bandsNearbyLogo.svg';
-import venueDecalLogo from './venueLogo.svg';
+import venueDecalLogo from './bandsNearbyLogo.svg';
+import favicon from '../../public/favicon.ico';
 
 const concertData = require('../../server/data/productionBetaData');
 
@@ -25,28 +24,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("touchstart", function () {}, true);
+    document.addEventListener('touchstart', () => {}, true);
   }
-  //
-  // exploreMusicStart = () => {
-  //   this.setState({ exploreMusic: !this.state.exploreMusic });
-  // }
-  //
-  // eMusicIndexIncrement = () => {
-  //   if (this.state.exploreMusicIndex < this.state.concerts.length - 1) {
-  //     this.setState({ exploreMusicIndex: this.state.exploreMusicIndex + 1 });
-  //   }
-  // }
-  //
-  // eMusicIndexDecrement = () => {
-  //   if (this.state.exploreMusicIndex > 0) {
-  //     this.setState({ exploreMusicIndex: this.state.exploreMusicIndex - 1 });
-  //   }
-  // }
-  //
-  // eMusicHandler = () => {
-  //   this.eMusicIndexIncrement();
-  // }
 
   handleFilters = (filtered) => {
     this.setState({ concerts: filtered });
@@ -57,20 +36,20 @@ class App extends Component {
       <div>
         <header>
           <div className="header-container">
-          <div className="app-logo-container">
-            {!isSmallScreen() && <div className="app-logo">BANDS NEARBY</div>}
-            {isSmallScreen() && <div className="app-logo">BN</div>}
-            <div className="app-logo-spacer"></div>
-          </div>
+            <div className="app-logo-container">
+              <div className="app-logo">BANDS NEARBY</div>
+              <div className="app-logo-mobile">BN</div>
+            {/* <div className="app-logo-spacer"></div> */}
+            </div>
             <Filters
               concertData={this.state.concertData}
               concerts={this.state.concerts}
               handleFilters={this.handleFilters}
             />
-        </div>
+          </div>
         </header>
         <div className="main-view-wrapper">
-          <div className="main-view-left"></div>
+          <div className="main-view-left" />
           <div className="main-view-center">
             <EventsList
               concerts={this.state.concerts}
@@ -80,13 +59,14 @@ class App extends Component {
             </div>
           </div>
           <div className="main-view-right">
-        <div className="decal-logo-container">
-          <img src={venueDecalLogo} className="decal-logo" alt="logo" />
+            <div className="decal-logo-container">
+              <img src={venueDecalLogo} className="decal-logo" alt="logo" />
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
       </div>
     );
   }
 }
+
 export default App;

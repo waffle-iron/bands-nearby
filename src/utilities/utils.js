@@ -1,4 +1,4 @@
-export const isSmallScreen = () => !window.matchMedia("(max-width: 667px)").matches ? false : true;
+export const isSmallScreen = () => !window.matchMedia("(max-width: 600px)").matches ? false : true;
 
 export const dayToEnglish = (date) => {
   const dateObj = new Date(date);

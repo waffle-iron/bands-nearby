@@ -406,8 +406,7 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
 
 .lowered {
   transform: translateY(0%);
-  transition: all 0.15s cubic-bezier(.18,-0.09,.73,1.36)
-
+  transition: all 0.15s cubic-bezier(.18,-0.09,.73,1.36);
 }
 
 .dropdown-container {
@@ -420,12 +419,9 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
   max-width: 100%;
 }
 
-
 .video {
-  flex: 1;
-  border-width: 5px;
-  border-color: black;
-  background-color: pink;
+  background-color: black;
+  border-bottom: solid white;
 }
 
 
@@ -487,16 +483,16 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
 .sounds-like-container {
   display: flex;
   font-stretch: extra-condensed;
-  font-size: 130%
+  font-size: 1.1vw;
 }
 
 .sounds-like {
-  flex: 1 1 22%;
+  flex: 1 1 15%;
   margin-right: 0.2%;
 }
 
 .sounds-like-artist-container {
-  flex: 3 3 77%;
+  flex: 3 3 85%;
 }
 
 .sounds-like-artist-breaker {
@@ -523,19 +519,13 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
   transition: all 0.5s;
 }
 
-
-
-
-
-
 @media only screen and (min-width:800px) {
   .event-list-entry:hover .concert-photo {
     filter: blur(1px);
     opacity: 0.4;
   }
 
-
-  .event-list-entry:hover  {
+  .event-list-entry:hover .show-info-container .show-info  {
     color: #220a37;
     font-size: 100.5%;
     opacity: 0.8;
@@ -547,14 +537,6 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
     font-size: 150%;
   }
 }
-/*
-@media screen and (min-device-width: 800px) and (max-device-width: 1440px){
-    ---STYLES---
-}*/
-
-
-
-
 
 @media only screen and (max-device-width: 600px) {
   .event-list-entry:active .concert-photo {
@@ -799,8 +781,9 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
     width: 100%;
     font-size: 100%;
     padding: 3vw;
-    padding-top: 4vw;
-    height: 32.2vh;
+    padding-top: 6vw;
+    height: 30.5vh;
+    /*height: 32.2vh;*/
   }
 
   .concert-photo-wrapper {
@@ -819,6 +802,22 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
   input[type=text] {
     font-size: 2.2vw;
   }
+
+  .sounds-like-container {
+    display: flex;
+    font-stretch: extra-condensed;
+    font-size: 130%
+  }
+
+  .sounds-like {
+    flex: 1 1 22%;
+    margin-right: 0.2%;
+  }
+
+  .sounds-like-artist-container {
+    flex: 3 3 77%;
+  }
+
 
 
 

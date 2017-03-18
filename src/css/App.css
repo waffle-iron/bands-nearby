@@ -233,6 +233,9 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
   flex: 1 1 25;
   font-size: 2.5vw;
   display: flex;
+  height: 50%;
+  /*border: solid yellow;*/
+  padding-top: 1%;
 }
 
 .price-label {
@@ -299,6 +302,7 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
   flex: 1 1 100%;
   align-self: flex-end;
   /*border: solid green;*/
+  /*margin-top: 5%;*/
 }
 
 
@@ -527,7 +531,7 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
 
   .event-list-entry:hover .show-info-container .show-info  {
     color: #220a37;
-    font-size: 100.5%;
+    font-size: 100.7%;
     opacity: 0.8;
   }
 }
@@ -535,6 +539,11 @@ input:-moz-placeholder { text-transform:uppercase; font-style:italic; letter-spa
 @media only screen and (min-width:1500px) {
   .show-info {
     font-size: 150%;
+  }
+  .event-list-entry:hover .show-info-container .show-info  {
+    color: #220a37;
+    font-size: 152%;
+    opacity: 0.8;
   }
 }
 

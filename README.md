@@ -1,6 +1,6 @@
 # Bands Nearby
 
-At a glance decide if you want go to a show and buy tickets with a click. Bands Nearby is a frictionless interface to explore music. Bands Nearby uses vanilla JS and JSDOM to scrape concert listings from local venues often too small or underground to be included in mainstream listings. Built with es6, Node.js, Bluebird, Flexbox, JSDOM, Jest, Webpack and React.
+At a glance decide if you want go to a show and buy tickets with a click. Bands Nearby is a frictionless interface to explore music. The application uses vanilla JS and JSDOM to scrape concert listings from local venues often too small or underground to be included in mainstream listings. Built with es6, Node.js, Bluebird, Flexbox, JSDOM, Jest, Webpack and React.
 
 Bands Nearby Beta is available on web and mobile: http://beta.bandsnearby.com/
 

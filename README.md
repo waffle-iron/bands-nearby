@@ -42,7 +42,7 @@ The Beta version of Bands Nearby automates a series of steps using the Node.js F
 
 ### Customizing the Dataset
 
-Contributors can customise Bands Nearby to display data from any venue anywhere in the world that has a website that can be scraped.
+Contributors can customise Bands Nearby to display data from any venue  in the world as long as it has a website that can be scraped.
 
 The node scraping task is designed so additional venues can be added easily. To add new venues, write a web scraper that returns an array of objects with the following properties:
 

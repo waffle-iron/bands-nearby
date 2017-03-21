@@ -1,4 +1,4 @@
-const getShows = require('./scraper.js');
+const getShows = require('./getHtml.js');
 
 const getGoogleSearchResult = (concertTitle, concertObj) => {
   const searchTerm = concertTitle[0].split(' ').join('+');

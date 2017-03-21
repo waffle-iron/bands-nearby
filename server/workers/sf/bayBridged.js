@@ -1,5 +1,5 @@
 const jsdom = require('jsdom');
-const getShows = require('../scraper.js');
+const getShows = require('../getHtml.js');
 const bluebirdPromise = require('bluebird');
 
 const chapelScraper = (window, venue) => {

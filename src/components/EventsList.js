@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import EventsListEntry from './EventsListEntry';
 
 class EventsList extends Component {
 
+  static propTypes = {
+    concerts: PropTypes.arrayOf(PropTypes.object),
+  }
+  
   render() {
-    const { concerts, exploreMusic, eMusicHandler } = this.props;
+    const { concerts } = this.props;
     return (
       <div ref={() => 'list'} className="events-list">
         <ul>

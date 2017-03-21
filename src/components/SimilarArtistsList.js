@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import SimilarArtistsEntry from './SimilarArtistsEntry';
 
 const SimilarArtistsList = ({ artists }) => {
@@ -19,6 +19,10 @@ const SimilarArtistsList = ({ artists }) => {
       </div>
     </div>
   );
+};
+
+SimilarArtistsList.propTypes = {
+  artists: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default SimilarArtistsList;

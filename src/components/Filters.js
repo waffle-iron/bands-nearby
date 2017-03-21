@@ -1,9 +1,16 @@
 import debounce from 'lodash/debounce';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { findMinMax, filterByCost, filterByTypeahead, displayMin } from '../utilities/filterHelpers';
 import { isSmallScreen, isFree } from '../utilities/utils';
 
 class Filters extends Component {
+
+  static propTypes = {
+    concertData: PropTypes.arrayOf(PropTypes.object),
+    handleFilters: PropTypes.func,
+    concerts: PropTypes.arrayOf(PropTypes.object),
+  }
+
   constructor() {
     super();
     this.state = {

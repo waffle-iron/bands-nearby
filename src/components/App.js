@@ -3,7 +3,7 @@ import '../css/App.css';
 import EventsList from './EventsList';
 import { sortByDate } from '../utilities/filterHelpers';
 import Filters from './Filters';
-import venueDecalLogo from './bandsNearbyLogo.svg';
+import venueDecalLogo from '../../public/bandsNearbyLogo.svg';
 
 const concertData = require('../../server/data/productionBetaData');
 

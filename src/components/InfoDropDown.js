@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import VideoList from './VideoList';
 
-
 class InfoDropDown extends Component {
+
+  static propTypes = {
+    artistSummary: PropTypes.string,
+    photo: PropTypes.string,
+    youTube: PropTypes.arrayOf(PropTypes.string),
+    toggled: PropTypes.bool,
+    slideAnimation: PropTypes.string,
+  }
+
   constructor() {
     super();
     this.state = {
@@ -11,7 +19,7 @@ class InfoDropDown extends Component {
   }
 
   render() {
-    const { id, artistSummary, photo, youTube, toggled, slideAnimation } = this.props;
+    const { artistSummary, photo, youTube, toggled, slideAnimation } = this.props;
     let isShown;
     toggled ? isShown = 'show' : isShown = 'hide';
     return (
@@ -33,6 +41,6 @@ class InfoDropDown extends Component {
       </div>
     );
   }
-};
+}
 
 export default InfoDropDown;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { isSmallScreen } from '../utilities/utils';
 
 const TitleList = ({ titles }) => {
@@ -17,6 +17,10 @@ const TitleList = ({ titles }) => {
       </div>}
     </div>
   );
+};
+
+TitleList.propTypes = {
+  titles: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default TitleList;

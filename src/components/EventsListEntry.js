@@ -1,10 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SimilarArtistsList from './SimilarArtistsList';
 import TitleList from './TitleList';
 import InfoDropDown from './InfoDropDown';
 import { dayToEnglish, isCover, textClamp } from '../utilities/utils';
 
 class EventsListEntry extends Component {
+  static propTypes = {
+    titles: PropTypes.arrayOf(PropTypes.string),
+    ticketLink: PropTypes.string,
+    date: PropTypes.string,
+    venue: PropTypes.string,
+    cost: PropTypes.number,
+    photo: PropTypes.string,
+    startTime: PropTypes.string,
+    youTube: PropTypes.arrayOf(PropTypes.string),
+    similarArtists: PropTypes.arrayOf(PropTypes.string),
+    artistSummary: PropTypes.string,
+    id: PropTypes.number,
+  }
+
   constructor() {
     super();
     this.state = {
@@ -62,7 +76,6 @@ class EventsListEntry extends Component {
           <img className="concert-photo" src={photo} alt={photo} />
         </div>
         <InfoDropDown
-          id={id}
           key={id}
           artistSummary={artistSummary} photo={photo}
           youTube={youTube} toggled={this.state.toggled}

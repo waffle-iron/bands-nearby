@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import YouTube from 'react-youtube';
 import { hideControlsMobile, pauseAllButPlaying } from '../utilities/videoEntryHelpers';
 
@@ -18,6 +18,12 @@ const VideoEntry = ({ index, videoId, isRendered }) => {
       />}
     </div>
   );
+};
+
+VideoEntry.propTypes = {
+  index: PropTypes.number,
+  videoId: PropTypes.string,
+  isRendered: PropTypes.bool,
 };
 
 export default VideoEntry;

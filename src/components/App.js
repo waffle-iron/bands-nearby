@@ -5,7 +5,8 @@ import { sortByDate } from '../utilities/filterHelpers';
 import Filters from './Filters';
 import venueDecalLogo from '../../public/bandsNearbyLogo.svg';
 
-const concertData = require('../../server/data/productionBetaData');
+// const concertData = require('../../server/data/productionBetaData');
+const concertData = require('../../server/data/crossbrowserTestData');
 
 class App extends Component {
   constructor() {

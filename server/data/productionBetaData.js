@@ -2,7 +2,7 @@
 // npm run build script does not work with es6 arrow functions in this file
 
 const data = require('./bandsNearbyData.json');
-// const data = require('./bandsNearbyDataMock');
+// const data = require('./crossbrowserTestData');
 
 
 const today = new Date();

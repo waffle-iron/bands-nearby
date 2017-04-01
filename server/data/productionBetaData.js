@@ -12,7 +12,7 @@ const monthNow = today.getMonth() + 1;
 const relevantData = function(data) {
   return data.filter(function(item) {
     const dateArray = item.date.split('-');
-    if (dateArray[1] == monthNow && dateArray[2] >= dayNow && dateArray[2] <= (dayNow + 6) && item.youTube !== [] && item.similarArtists !== []) {
+    if (item.headliner[0] !=='$' && dateArray[1] == monthNow && dateArray[2] >= dayNow && dateArray[2] <= (dayNow + 6) && item.youTube !== [] && item.similarArtists !== [] || dateArray[1] == monthNow + 1 && dateArray[2] <= 6) {
       return true;
     }
   });
@@ -20,3 +20,4 @@ const relevantData = function(data) {
 
 module.exports = relevantData(data);
 // module.exports = data;
+

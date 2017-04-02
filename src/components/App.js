@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import EventsList from './EventsList';
+import AppLogo from './AppLogo';
 import { sortByDate } from '../utilities/filterHelpers';
 import Filters from './Filters';
 import venueDecalLogo from '../../public/bandsNearbyLogo.svg';
@@ -33,10 +34,7 @@ class App extends Component {
       <div>
         <header>
           <div className="header-container">
-            <div className="app-logo-container">
-              <div className="app-logo">BANDS NEARBY</div>
-              <div className="app-logo-mobile">BN</div>
-            </div>
+            <AppLogo />
             <Filters
               concertData={this.state.concertData}
               concerts={this.state.concerts}

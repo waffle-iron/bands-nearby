@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
 import { isSmallScreen } from '../utilities/utils';
 
-const TitleList = ({ titles }) => {
+const TitleList = ({ titles, index, id }) => {
   return (
     <div>
       {!isSmallScreen() && <div>
-        {titles.reduce((acc, title, index) => {
+        {titles.reduce((acc, title) => {
           if (index !== 0) {
-            acc.push(<span key={index} className="supporting-bands-title">{title}</span>);
+            acc.push(<span key={`${title}${id}`} className="supporting-bands-title">{title}</span>);
           }
           return acc;
         }, [])}

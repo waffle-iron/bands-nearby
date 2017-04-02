@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import VideoEntry from './VideoEntry';
 
-const VideoList = ({ youTube, photo, isRendered }) => {
+const VideoList = ({ youTube, photo, isRendered}) => {
   return (
     <ul>
       {youTube.map((video, index) => {
@@ -11,7 +11,7 @@ const VideoList = ({ youTube, photo, isRendered }) => {
             index={index}
             thumbnail={photo}
             isRendered={isRendered}
-            key={index}
+            key={video}
           />
         );
       })}

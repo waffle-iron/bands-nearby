@@ -19,7 +19,7 @@ class InfoDropDown extends Component {
   }
 
   render() {
-    const { artistSummary, photo, youTube, toggled, slideAnimation } = this.props;
+    const { artistSummary, photo, youTube, toggled, slideAnimation, id } = this.props;
     let isShown;
     toggled ? isShown = 'show' : isShown = 'hide';
     return (
@@ -35,6 +35,7 @@ class InfoDropDown extends Component {
               photo={photo}
               youTube={youTube}
               isRendered={toggled}
+              id={id}
             />
           </div>
         </div>

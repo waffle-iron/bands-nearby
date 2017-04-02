@@ -6,7 +6,7 @@ class EventsList extends Component {
   static propTypes = {
     concerts: PropTypes.arrayOf(PropTypes.object),
   }
-  
+
   render() {
     const { concerts } = this.props;
     return (
@@ -14,8 +14,8 @@ class EventsList extends Component {
         <ul>
           {Object.keys(concerts).map((concert, index) =>
             <EventsListEntry
-              key={index}
-              id={index}
+              key={concerts[concert].id}
+              id={concerts[concert].id}
               titles={concerts[concert].title}
               ticketLink={concerts[concert].link}
               date={concerts[concert].date}

@@ -16,7 +16,7 @@ class EventsListEntry extends Component {
     youTube: PropTypes.arrayOf(PropTypes.string),
     similarArtists: PropTypes.arrayOf(PropTypes.string),
     artistSummary: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
   }
 
   constructor() {
@@ -60,7 +60,7 @@ class EventsListEntry extends Component {
               <div className="date">{dayToEnglish(date)}</div>
               <div className="headliner">{textClamp(titles[0])}</div>
               <span className="other-bands">
-                <TitleList titles={this.props.titles} />
+                <TitleList titles={this.props.titles} id={this.props.id} />
               </span>
               <div>
                 <span className="venue">{venue}</span>

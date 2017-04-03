@@ -1,6 +1,6 @@
 # Bands Nearby
 
-At a glance decide if you want go to a show and buy tickets with a click. Bands Nearby is a frictionless interface to explore music. The application uses vanilla JS and JSDOM to scrape concert listings from local venues often too small or underground to be included in mainstream listings. Built with es6, Node.js, Bluebird, Flexbox, JSDOM, Jest, Webpack and React.
+At a glance decide if you want go to a show and buy tickets with a click. Bands Nearby is a frictionless interface to explore music. The application uses vanilla JS and JSDOM to scrape concert listings from local venues often too small or underground to be included in mainstream listings. Built with es6, React, React Router, Node.js, JSDOM, Jest, Enzyme, Webpack, Bluebird, Flexbox.
 
 Bands Nearby Beta is available on web and mobile: http://beta.bandsnearby.com/
 
@@ -60,6 +60,7 @@ show.cost = cost;  // number
 show.artistSummary = artistSummary; // string
 show.photo = photo; // string
 show.link = link;  // string
+Show.id = number // number
  ```
 
 In cronjob.js import your scraper and add the new venue object to the venues array.
@@ -71,6 +72,35 @@ See bayBridged.sf for an example scraper. The fastest scrapers used a breadth fi
 
 Bands Nearby uses [Bluebird](http://bluebirdjs.com/docs/getting-started.html) promises to handle asynchronous actions. The Bluebird library was a better choice over native es6 promises because of helpful methods like asynch map and reduce and the ability to import and promisify entire libraries.
 
+## Tests
+
+Bands Nearby uses [Jest](https://facebook.github.io/jest/) with [Enzyme](https://github.com/airbnb/enzyme). Enzyme allows shallow rendering of components, making it easy to isolate tests. Shallow rendering in Enzyme renders components one level deep so a component can be tested in isolation of its children components.
+
+To execute the test suite run:
+```
+npm run test
+```
+
+To generate an Istanbul code coverage report run:
+```
+npm run istanbul-coverage
+
+```
+Static components are tested using Jest Snapshots. Snapshot tests render HTML markup and compare the current version to the previous version. The first time you add a Snapshot test create a baseline for comparison by running:
+
+```
+npm run test-update
+```
+
+Jest caches your Babel environment. If you update your Babel environment to clear the cache run:
+
+```
+jest no-cache
+```
+
+When adding tests, save your files in the components directory with the naming convention ComponenName.test.js. Saving tests alongside components fosters self-documenting code.
+
+
 ## Deployment
 Once a copy of Bands Nearby is running on your server, automate data generation by [setting up a cron job](https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-on-a-vps) to run cronjob.js. 
 
@@ -78,3 +108,5 @@ Once a copy of Bands Nearby is running on your server, automate data generation 
 ## License
 
 This application is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+

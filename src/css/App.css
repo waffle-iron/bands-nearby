@@ -54,6 +54,8 @@ header {
 
 input {
   border-radius: 0;
+  color: black;
+  font-family: 'Quicksand', sans-serif;
 }
 
 input[type=range] {

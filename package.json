@@ -66,7 +66,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "updateTest": "npm run test -- -u"
+    "test-update": "npm run test -- -u",
+    "istanbul-coverage": "npm run test -- --coverage"
   },
   "jest": {
     "moduleFileExtensions": [

@@ -81,10 +81,6 @@ To execute the test suite run:
 npm run test
 ```
 
-To generate an Istanbul code coverage report run:
-```
-npm run istanbul-coverage
-```
 Static components are tested using Jest Snapshots. Snapshot tests render HTML markup and compare the current version to the previous version. The first time you add a Snapshot test create a baseline for comparison by running:
 
 ```
@@ -99,6 +95,10 @@ jest no-cache
 
 When adding tests, save your files in the components directory with the naming convention ComponenName.test.js. This style of saving tests alongside components was chosen to foster self-documenting code.
 
+To generate an Istanbul code coverage report run:
+```
+npm run istanbul-coverage
+```
 
 ## Deployment
 Once a copy of Bands Nearby is running on your server, automate data generation by [setting up a cron job](https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-on-a-vps) to run cronjob.js. 

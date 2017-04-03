@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/App.css';
 import EventsList from './EventsList';
 import AppLogo from './AppLogo';
 import { sortByDate } from '../utilities/filterHelpers';
@@ -8,7 +7,7 @@ import venueDecalLogo from '../../public/bandsNearbyLogo.svg';
 
 const concertData = require('../../server/data/productionBetaData');
 
-class App extends Component {
+class Main extends Component {
   constructor() {
     super();
     this.state = {
@@ -63,4 +62,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Main;

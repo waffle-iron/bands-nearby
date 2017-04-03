@@ -27,8 +27,8 @@ Create a file called APIKeys.js in server/workers and add keys from [YouTube](ht
 ```
 create APIKeys.js file in server/workers:
 
-exports.YOUTUBE = 'AIzTEkZEmtfLs7X_4MBvT8rH9E';
-exports.LASTFM = '2f2f02f1195f2b3514f9e43';
+exports.YOUTUBE = 'your-key-here-as-a-string';
+exports.LASTFM = 'your-key-here-as-a-string';
 ```
 
 To generate a current dataset for concerts in San Francisco from the root directory run:

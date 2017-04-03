@@ -84,7 +84,6 @@ npm run test
 To generate an Istanbul code coverage report run:
 ```
 npm run istanbul-coverage
-
 ```
 Static components are tested using Jest Snapshots. Snapshot tests render HTML markup and compare the current version to the previous version. The first time you add a Snapshot test create a baseline for comparison by running:
 
@@ -98,7 +97,7 @@ Jest caches your Babel environment. If you update your Babel environment to clea
 jest no-cache
 ```
 
-When adding tests, save your files in the components directory with the naming convention ComponenName.test.js. Saving tests alongside components fosters self-documenting code.
+When adding tests, save your files in the components directory with the naming convention ComponenName.test.js. This style of saving tests alongside components was chosen to foster self-documenting code.
 
 
 ## Deployment

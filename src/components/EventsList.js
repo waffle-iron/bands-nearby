@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import EventsListEntry from './EventsListEntry';
+import { connect } from 'react-redux'
 
 class EventsList extends Component {
 
@@ -8,11 +9,16 @@ class EventsList extends Component {
   }
 
   render() {
-    const { concerts } = this.props;
+    // const { concerts } = this.props;
+    const concerts = this.props.concertData
+    if (this.props.concertData.undefined) {
+      console.log(concerts, 'EventsList')
+
+    }
     return (
       <div ref={() => 'list'} className="events-list">
         <ul>
-          {Object.keys(concerts).map((concert, index) =>
+          {this.props.concertData && Object.keys(concerts).map((concert, index) =>
             <EventsListEntry
               key={concerts[concert].id}
               id={concerts[concert].id}
@@ -34,4 +40,12 @@ class EventsList extends Component {
   }
 }
 
-export default EventsList;
+// map states to props do filter here
+
+const mapStateToProps = (state) => {
+  return {
+    concertData: state.concertData
+  }
+};
+
+export default connect(mapStateToProps)(EventsList);

@@ -1,5 +1,7 @@
 import debounce from 'lodash/debounce';
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { setSearchTerm } from '../actionCreators';
 import { findMinMax, filterByCost, filterByTypeahead, displayMin } from '../utilities/filterHelpers';
 import { isSmallScreen, isFree } from '../utilities/utils';
 
@@ -9,6 +11,7 @@ class Filters extends Component {
     concertData: PropTypes.arrayOf(PropTypes.object),
     handleFilters: PropTypes.func,
     concerts: PropTypes.arrayOf(PropTypes.object),
+    dispatch: PropTypes.func,
   }
 
   constructor() {
@@ -34,6 +37,11 @@ class Filters extends Component {
     if (!this.state.isCostSpecified && this.rangeInput) {
       this.rangeInput.value = this.state.max;
     }
+  }
+
+  handleSearchTermChange (event) {
+    this.props.dispatch(setSearchTerm(event.target.value))
+    console.log(filterByTypeahead(this.props.concerts, this.props.searchTerm), 'filtred list !!!!!!')
   }
 
   setMinMax = (concerts) => {
@@ -119,11 +127,12 @@ class Filters extends Component {
   }
 
   render() {
+    const { searchTerm } = this.props
     const { concertData, handleFilters, concerts } = this.props;
     return (
       <div className="filters-container">
         <div className="typeahead-container">
-          <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleInput(e)} placeholder="Band/SoundsLike/Venue" />
+          <input name="typeAheadString" id="typeAheadString" type="text" className="typed-input" onChange={e => this.handleSearchTermChange(e)} placeholder="Band/SoundsLike/Venue" value={searchTerm}/>
         </div>
         <div className="searched-cost-container-mobile">
           <div className="searched-cost-frame-mobile">
@@ -154,4 +163,10 @@ class Filters extends Component {
   }
 }
 
-export default Filters;
+const mapStateToProps = (state) => {
+  return {
+    searchTerm: state.searchTerm
+  }
+};
+
+export default connect(mapStateToProps)(Filters);

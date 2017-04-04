@@ -9,12 +9,7 @@ class EventsList extends Component {
   }
 
   render() {
-    // const { concerts } = this.props;
     const concerts = this.props.concertData
-    if (this.props.concertData.undefined) {
-      console.log(concerts, 'EventsList')
-
-    }
     return (
       <div ref={() => 'list'} className="events-list">
         <ul>

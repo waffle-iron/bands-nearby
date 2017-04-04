@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import EventsList from './EventsList';
 import AppLogo from './AppLogo';
-import { sortByDate } from '../utilities/filterHelpers';
 import Filters from './Filters';
-import venueDecalLogo from '../../public/bandsNearbyLogo.svg';
+// import venueDecalLogo from '../css/images/bandsNearbyLogo.svg';
 import { connect } from 'react-redux';
 import { fetchConcertData } from '../actionCreators'
 
@@ -20,7 +19,7 @@ class Main extends Component {
   }
 
   componentWillMount() {
-    this.setState({ concerts: sortByDate(this.state.concertData) });
+    // this.setState({ concerts: sortByDate(this.state.concertData) });
     if (!this.props.concertData[0]) {
      this.props.dispatch(fetchConcertData(`http://demo5873748.mockable.io/`))
     }
@@ -41,9 +40,9 @@ class Main extends Component {
         <header>
           <div className="header-container">
             <AppLogo />
-            <Filters
-              concertData={this.state.concertData}
-              concerts={this.state.concerts}
+             <Filters
+              concertData={this.props.concertData}
+              concerts={this.props.concertData}
               handleFilters={this.handleFilters}
             />
           </div>
@@ -55,12 +54,12 @@ class Main extends Component {
               // concerts={this.state.concerts}
             />
             <div className="decal-logo-container-mobile">
-              <img src={venueDecalLogo} className="decal-logo-mobile" alt="logo" />
+              {/* <img src={venueDecalLogo} className="decal-logo-mobile" alt="logo" /> */}
             </div>
           </div>
           <div className="main-view-right">
             <div className="decal-logo-container">
-              <img src={venueDecalLogo} className="decal-logo" alt="logo" />
+              {/* <img src={venueDecalLogo} className="decal-logo" alt="logo" /> */}
             </div>
           </div>
         </div>
@@ -69,12 +68,10 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-
-  const concertData = state.concertData[ownProps.show] ? state.concertData[ownProps.show] : {}
+const mapStateToProps = (state) => {
   return {
-    concertData
+    concertData: state.concertData
   }
-}
+};
 
 export default connect(mapStateToProps)(Main)

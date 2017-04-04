@@ -1,10 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <base href="/public/">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="App.css">
     <link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica|Monoton|Quicksand|Amatic+SC|Londrina+Sketch|Annie+Use+Your+Telescope" rel="stylesheet">
+
       <!-- Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -27,6 +32,7 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
-    <script src="https://cdn.optimizely.com/js/2946700692.js"></script>
+    <script src="/public/bundle.js" async></script>
+    <script src="https://cdn.optimizely.com/js/2946700692.js" async></script>
   </body>
 </html>

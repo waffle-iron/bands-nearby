@@ -1,2 +1,3 @@
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM'
+// export const FIND_MIN_COST = 'FIND_MIN_COST'
 export const FETCH_CONCERT_DATA = 'FETCH_CONCERT_DATA'

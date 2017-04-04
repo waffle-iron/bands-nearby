@@ -25,7 +25,9 @@ class Filters extends Component {
     this.debouncedHandleInput = debounce(this.handleInput, 15);
   }
   componentWillMount() {
-    this.setMinMax(this.props.concertData);
+    if (this.props.concertData[0]) {
+      this.setMinMax(this.props.concertData);
+    }
   }
 
   componentDidMount() {

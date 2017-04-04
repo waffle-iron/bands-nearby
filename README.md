@@ -1,6 +1,6 @@
 # Bands Nearby
 
-At a glance decide if you want go to a show and buy tickets with a click. Bands Nearby is a frictionless interface to explore music. The application uses vanilla JS and JSDOM to scrape concert listings from local venues often too small or underground to be included in mainstream listings. Built with es6, React, React Router, Node.js, JSDOM, Jest, Enzyme, Webpack, Bluebird, Flexbox.
+At a glance decide if you want go to a show and buy tickets with a click. Bands Nearby is a frictionless interface to explore music. The application uses vanilla JS and JSDOM to scrape concert listings from local venues often too small or underground to be included in mainstream listings. Built with es6, React, React Router, Node.js, JSDOM, Jest, Enzyme, Webpack, Preact, Bluebird, Flexbox.
 
 Bands Nearby Beta is available on web and mobile: http://beta.bandsnearby.com/
 
@@ -101,7 +101,9 @@ npm run istanbul-coverage
 ```
 
 ## Deployment
-Once a copy of Bands Nearby is running on your server, automate data generation by [setting up a cron job](https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-on-a-vps) to run cronjob.js. 
+Once a copy of Bands Nearby is running on your server, automate data generation by [setting up a cron job](https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-on-a-vps) to run cronjob.js.
+
+**[Preact](https://preactjs.com/) is a fast 3kB alternative to React with the same ES6 API. Configuring Webpack to alias Preact for React cut bundle-file size by 75% and made initial load-time eight times faster.**  
 
 
 ## License

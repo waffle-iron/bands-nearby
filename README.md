@@ -7,6 +7,7 @@ Bands Nearby Beta is available on web and mobile: http://beta.bandsnearby.com/
 Bands Nearby:
 ![alt text](https://github.com/jenjwong/bands-nearby/blob/beta/src/css/images/venuePic.png "Bands Nearby")
 
+This application was built in React, but is easily ported over to Preact. **[Preact](https://preactjs.com/) is a fast 3kB alternative to React with the same ES6 API. Configuring Webpack to alias Preact for React cuts bundle-file size by 75% and makes initial load-time six to nine times faster.**  
 
 ## Getting Started
 
@@ -102,8 +103,6 @@ npm run istanbul-coverage
 
 ## Deployment
 Once a copy of Bands Nearby is running on your server, automate data generation by [setting up a cron job](https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-on-a-vps) to run cronjob.js.
-
-**[Preact](https://preactjs.com/) is a fast 3kB alternative to React with the same ES6 API. Configuring Webpack to alias Preact for React cut bundle-file size by 75% and made initial load-time eight times faster.**  
 
 
 ## License

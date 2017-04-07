@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/jenjwong/bands-nearby.png?label=ready&title=Ready)](https://waffle.io/jenjwong/bands-nearby)
 # Bands Nearby
 
 At a glance decide if you want go to a show and buy tickets with a click. Bands Nearby is a frictionless interface to explore music. The application uses vanilla JS and JSDOM to scrape concert listings from local venues often too small or underground to be included in mainstream listings. Built with es6, React, React Router, Node.js, JSDOM, Jest, Enzyme, Webpack, Preact, Bluebird, Flexbox.
